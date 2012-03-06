@@ -31,6 +31,11 @@ public class HtmlCapabilityTest extends AbstractHtmlCapabilityTest {
     }
 
     @Test
+    public void testText() throws Exception {
+        assertEquals("Hello world!", text("Hello world!"));
+    }
+
+    @Test
     public void testSelfClosingTags() throws Exception {
         assertEquals("<img id=\"image\" />", img(id("image")));
     }
