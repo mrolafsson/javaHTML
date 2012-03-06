@@ -81,8 +81,8 @@ public class HtmlCapability {
         return new ContainerTag(writer, Tag.A, attr);
     }
 
-    public ContainerTag img(Attribute... attr) throws IOException {
-        return new ContainerTag(writer, Tag.IMG, attr);
+    public SelfClosingTag img(Attribute... attr) throws IOException {
+        return new SelfClosingTag(writer, Tag.IMG, attr);
     }
 
     public ContainerTag form(Attribute... attr) throws IOException {

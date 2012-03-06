@@ -6,7 +6,7 @@ import java.io.Writer;
 /**
  *
  */
-public class Text extends Tag {
+public class Text extends Content {
 
     public Text(Writer writer, String text) throws IOException {
         super(writer);

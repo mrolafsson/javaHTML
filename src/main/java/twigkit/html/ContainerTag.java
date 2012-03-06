@@ -10,22 +10,17 @@ import java.io.Writer;
  */
 public class ContainerTag extends Tag {
 
-    private final String name;
-    private final Attribute[] attributes;
-
     public ContainerTag(Writer writer, String name, Attribute... attributes) throws IOException {
-        super(writer);
-        this.name = name;
-        this.attributes = attributes;
+        super(writer, name, attributes);
         open();
     }
 
-    public ContainerTag body(Tag... html) throws IOException {
+    public ContainerTag body(Content... html) throws IOException {
         close();
         return this;
     }
 
-    public ContainerTag append(Tag... html) {
+    public ContainerTag append(Content... html) {
         return this;
     }
 

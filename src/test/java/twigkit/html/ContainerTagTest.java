@@ -23,7 +23,6 @@ public class ContainerTagTest extends AbstractHtmlCapabilityTest {
         assertEquals("<dt></dt>", dt().close());
         assertEquals("<dd></dd>", dd().close());
         assertEquals("<a></a>", a().close());
-        assertEquals("<img></img>", img().close()); // TODO should selfclose
         assertEquals("<form></form>", form().close());
         assertEquals("<input></input>", input().close());
         assertEquals("<fieldset></fieldset>", fieldset().close());
