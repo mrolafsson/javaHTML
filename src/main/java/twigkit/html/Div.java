@@ -11,10 +11,12 @@ import java.io.Writer;
 public class Div extends Tag {
 
     private static final String DIV = "div";
+    private final Attribute[] attributes;
 
-    public Div(Writer writer, Attribute... attr) throws IOException {
+    public Div(Writer writer, Attribute... attributes) throws IOException {
         super(writer);
-        open(attr);
+        this.attributes = attributes;
+        open();
     }
 
     public Div empty() throws IOException {
@@ -27,17 +29,25 @@ public class Div extends Tag {
         return this;
     }
 
-    private void open(Attribute... attr) throws IOException {
-        writer.write(LT);
-        writer.write(DIV);
-        Attribute.write(writer, attr);
-        writer.write(GT);
+    public Div append(Tag... html) {
+        return this;
     }
 
-    private void close() throws IOException {
+    private Div open() throws IOException {
+        writer.write(LT);
+        writer.write(DIV);
+        Attribute.write(writer, attributes);
+        writer.write(GT);
+
+        return this;
+    }
+
+    public Div close() throws IOException {
         writer.write(LT);
         writer.write(SLASH);
         writer.write(DIV);
         writer.write(GT);
+
+        return this;
     }
 }
