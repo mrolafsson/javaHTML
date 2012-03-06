@@ -19,11 +19,6 @@ public class Div extends Tag {
         open();
     }
 
-    public Div empty() throws IOException {
-        close();
-        return this;
-    }
-
     public Div body(Tag... html) throws IOException {
         close();
         return this;
