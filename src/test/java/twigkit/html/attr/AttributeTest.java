@@ -18,6 +18,18 @@ public class AttributeTest {
     }
 
     @Test
+    public void testAddValue() throws Exception {
+        Attribute attr = new Attribute("name", "value1", "value2").add("value3");
+        assertEquals("name=\"value1 value2 value3\"", attr.toString());
+    }
+
+    @Test
+    public void testRemoveValue() throws Exception {
+        Attribute attr = new Attribute("name", "value1", "value2", "value3").remove("value2");
+        assertEquals("name=\"value1 value3\"", attr.toString());
+    }
+
+    @Test
     public void testCss() throws Exception {
         Attribute attr = new Attribute.Css("class1", "class2");
         assertEquals("class=\"class1 class2\"", attr.toString());
