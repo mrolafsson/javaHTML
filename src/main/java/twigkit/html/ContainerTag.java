@@ -8,39 +8,40 @@ import java.io.Writer;
 /**
  *
  */
-public class Div extends Tag {
+public class ContainerTag extends Tag {
 
-    private static final String DIV = "div";
+    private final String name;
     private final Attribute[] attributes;
 
-    public Div(Writer writer, Attribute... attributes) throws IOException {
+    public ContainerTag(Writer writer, String name, Attribute... attributes) throws IOException {
         super(writer);
+        this.name = name;
         this.attributes = attributes;
         open();
     }
 
-    public Div body(Tag... html) throws IOException {
+    public ContainerTag body(Tag... html) throws IOException {
         close();
         return this;
     }
 
-    public Div append(Tag... html) {
+    public ContainerTag append(Tag... html) {
         return this;
     }
 
-    private Div open() throws IOException {
+    private ContainerTag open() throws IOException {
         writer.write(LT);
-        writer.write(DIV);
+        writer.write(name);
         Attribute.write(writer, attributes);
         writer.write(GT);
 
         return this;
     }
 
-    public Div close() throws IOException {
+    public ContainerTag close() throws IOException {
         writer.write(LT);
         writer.write(SLASH);
-        writer.write(DIV);
+        writer.write(name);
         writer.write(GT);
 
         return this;
