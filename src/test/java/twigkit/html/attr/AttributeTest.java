@@ -2,7 +2,9 @@ package twigkit.html.attr;
 
 import org.junit.Test;
 
+import java.io.IOException;
 import java.io.StringWriter;
+import java.io.Writer;
 
 import static junit.framework.Assert.assertEquals;
 
@@ -15,6 +17,27 @@ public class AttributeTest {
     public void testAttribute() throws Exception {
         Attribute attr = new Attribute("name", "value1", "value2");
         assertEquals("name=\"value1 value2\"", attr.toString());
+    }
+
+    @Test(expected = IOException.class)
+    public void testNullWriter() throws Exception {
+        Attribute attr = new Attribute("name", "value1", "value2");
+        attr.write(new Writer() {
+            @Override
+            public void write(char[] chars, int i, int i1) throws IOException {
+                throw new IOException();
+            }
+
+            @Override
+            public void flush() throws IOException {
+                //To change body of implemented methods use File | Settings | File Templates.
+            }
+
+            @Override
+            public void close() throws IOException {
+                //To change body of implemented methods use File | Settings | File Templates.
+            }
+        });
     }
 
     @Test

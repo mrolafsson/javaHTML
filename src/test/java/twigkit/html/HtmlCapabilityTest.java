@@ -5,7 +5,7 @@ import org.junit.Test;
 /**
  * @author mr.olafsson
  */
-public class ContainerTagTest extends AbstractHtmlCapabilityTest {
+public class HtmlCapabilityTest extends AbstractHtmlCapabilityTest {
 
     @Test
     public void testContainerTags() throws Exception {
@@ -31,9 +31,14 @@ public class ContainerTagTest extends AbstractHtmlCapabilityTest {
     }
 
     @Test
+    public void testSelfClosingTags() throws Exception {
+        assertEquals("<img id=\"image\" />", img(id("image")));
+    }
+
+    @Test
     public void testEmptyDivWithAttributes() throws Exception {
-        ContainerTag div = div(css("class1", "class2"), id("something")).close();
-        assertEquals("<div class=\"class1 class2\" id=\"something\"></div>", div);
+        ContainerTag div = div(css("class1", "class2"), id("something"), data("base", "sql"), attr("onclick", "alert('hello');")).close();
+        assertEquals("<div class=\"class1 class2\" id=\"something\" data-base=\"sql\" onclick=\"alert('hello');\"></div>", div);
     }
 
     @Test

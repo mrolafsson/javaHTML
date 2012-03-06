@@ -16,11 +16,7 @@ public class HtmlCapability {
         this.writer = writer;
     }
 
-    public Writer getWriter() {
-        return writer;
-    }
-
-    public void setWriter(Writer writer) {
+    protected void setWriter(Writer writer) {
         this.writer = writer;
     }
 
