@@ -71,6 +71,24 @@ public class AttributeTest {
     }
 
     @Test
+    public void testHref() throws Exception {
+        Attribute attr = new Attribute.Href("http://host/");
+        assertEquals("href=\"http://host/\"", attr.toString());
+    }
+
+    @Test
+    public void testSrc() throws Exception {
+        Attribute attr = new Attribute.Src("http://host/");
+        assertEquals("src=\"http://host/\"", attr.toString());
+    }
+
+    @Test
+    public void testTarget() throws Exception {
+        Attribute attr = new Attribute.Target("_blank");
+        assertEquals("target=\"_blank\"", attr.toString());
+    }
+
+    @Test
     public void testWriteAttributes() throws Exception {
         StringWriter writer = new StringWriter();
         Attribute.write(writer, new Attribute.Css("class1", "class2"), new Attribute.Id("something"));

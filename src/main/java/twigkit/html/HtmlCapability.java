@@ -125,4 +125,16 @@ public class HtmlCapability {
     public Attribute.Data data(String name, String value) {
         return new Attribute.Data(name, value);
     }
+
+    public Attribute.Href href(String value) {
+        return new Attribute.Href(value);
+    }
+
+    public Attribute.Src src(String value) {
+        return new Attribute.Src(value);
+    }
+
+    public Attribute.Target target(String value) {
+        return new Attribute.Target(value);
+    }
 }

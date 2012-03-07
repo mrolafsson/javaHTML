@@ -28,6 +28,7 @@ public class HtmlCapabilityTest extends AbstractHtmlCapabilityTest {
         assertEquals("<fieldset></fieldset>", fieldset().close());
         assertEquals("<legend></legend>", legend().close());
         assertEquals("<script></script>", script().close());
+        assertEquals("<blink></blink>", custom("blink").close());
     }
 
     @Test
@@ -37,7 +38,12 @@ public class HtmlCapabilityTest extends AbstractHtmlCapabilityTest {
 
     @Test
     public void testSelfClosingTags() throws Exception {
-        assertEquals("<img id=\"image\" />", img(id("image")));
+        assertEquals("<img id=\"image\" src=\"pic.png\" />", img(id("image"), src("pic.png")));
+    }
+
+    @Test
+    public void testA() throws Exception {
+        assertEquals("<a href=\"http://\" target=\"_blank\">Hello</a>", a(href("http://"), target("_blank")).body(text("Hello")));
     }
 
     @Test

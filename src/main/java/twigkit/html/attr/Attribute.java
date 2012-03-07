@@ -33,7 +33,7 @@ import java.util.List;
  */
 public class Attribute {
 
-    private static final String CLASS = "class", ID = "id", DATA = "data-";
+    private static final String CLASS = "class", ID = "id", DATA = "data-", HREF = "href", SRC = "src", TARGET = "target";
     private static final String SPACE = " ", QUOTE = "\"", EQUALS = "=";
 
     private final String name;
@@ -110,6 +110,24 @@ public class Attribute {
     public static class Data extends Attribute {
         public Data(String name, String value) {
             super(DATA + name, value);
+        }
+    }
+
+    public static class Href extends Attribute {
+        public Href(String value) {
+            super(HREF, value);
+        }
+    }
+
+    public static class Src extends Attribute {
+        public Src(String value) {
+            super(SRC, value);
+        }
+    }
+
+    public static class Target extends Attribute {
+        public Target(String value) {
+            super(TARGET, value);
         }
     }
 }
