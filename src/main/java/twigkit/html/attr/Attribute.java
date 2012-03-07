@@ -41,7 +41,12 @@ public class Attribute {
 
     public Attribute(String name, String... values) {
         this.name = name;
-        this.values = new ArrayList<String>(Arrays.asList(values));
+        this.values = new ArrayList<String>();
+        for (String value : values) {
+            if (value != null) {
+                this.values.add(value);
+            }
+        }
     }
 
     public void write(Writer writer) throws IOException {
@@ -72,8 +77,10 @@ public class Attribute {
 
     public static void write(Writer writer, Attribute... attributes) throws IOException {
         for (int i = 0; i < attributes.length; i++) {
-            writer.write(SPACE);
-            attributes[i].write(writer);
+            if (attributes[i].values != null && attributes[i].values.size() > 0) {
+                writer.write(SPACE);
+                attributes[i].write(writer);
+            }
         }
     }
 

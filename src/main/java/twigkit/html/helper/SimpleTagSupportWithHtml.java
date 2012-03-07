@@ -109,6 +109,10 @@ public abstract class SimpleTagSupportWithHtml extends SimpleTagSupport {
         return new ContainerTag(writer, Tag.SCRIPT, attr);
     }
 
+    public ContainerTag custom(String name, Attribute... attr) throws IOException {
+        return new ContainerTag(writer, name, attr);
+    }
+
 
     public Text text(String text) throws IOException {
         return new Text(writer, text);
