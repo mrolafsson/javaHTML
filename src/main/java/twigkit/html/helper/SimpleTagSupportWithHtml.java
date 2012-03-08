@@ -7,7 +7,6 @@ import twigkit.html.Text;
 import twigkit.html.attr.Attribute;
 
 import javax.servlet.jsp.JspException;
-import javax.servlet.jsp.tagext.JspTag;
 import javax.servlet.jsp.tagext.SimpleTagSupport;
 import java.io.IOException;
 import java.io.Writer;
@@ -30,7 +29,6 @@ public abstract class SimpleTagSupportWithHtml extends SimpleTagSupport {
     }
 
     public SimpleTagSupportWithHtml(Class context) {
-        this.writer = writer;
         this.context = context;
     }
 
