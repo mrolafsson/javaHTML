@@ -89,6 +89,12 @@ public class AttributeTest {
     }
 
     @Test
+    public void testTitle() throws Exception {
+        Attribute attr = new Attribute.Title("tooltip");
+        assertEquals("title=\"tooltip\"", attr.toString());
+    }
+
+    @Test
     public void testWriteAttributes() throws Exception {
         StringWriter writer = new StringWriter();
         Attribute.write(writer, new Attribute.Css("class1", "class2"), new Attribute.Id("something"));

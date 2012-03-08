@@ -137,4 +137,8 @@ public class HtmlCapability {
     public Attribute.Target target(String value) {
         return new Attribute.Target(value);
     }
+
+    public Attribute.Title title(String value) {
+        return new Attribute.Title(value);
+    }
 }

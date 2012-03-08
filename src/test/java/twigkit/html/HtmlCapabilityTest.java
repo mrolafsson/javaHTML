@@ -43,7 +43,7 @@ public class HtmlCapabilityTest extends AbstractHtmlCapabilityTest {
 
     @Test
     public void testA() throws Exception {
-        assertEquals("<a href=\"http://\" target=\"_blank\">Hello</a>", a(href("http://"), target("_blank")).body(text("Hello")));
+        assertEquals("<a href=\"http://\" target=\"_blank\" title=\"tooltip\">Hello</a>", a(href("http://"), target("_blank"), title("tooltip")).body(text("Hello")));
     }
 
     @Test
