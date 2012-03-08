@@ -14,11 +14,17 @@ public class ContainerTag extends Tag {
 
     private static final Logger logger = LoggerFactory.getLogger(ContainerTag.class);
 
+    private Class context;
     private int state;
 
     public ContainerTag(Writer writer, String name, Attribute... attributes) throws IOException {
+        this(writer, name, ContainerTag.class, attributes);
+    }
+
+    public ContainerTag(Writer writer, String name, Class context, Attribute... attributes) throws IOException {
         super(writer, name, attributes);
         open();
+        this.context = context;
     }
 
     public ContainerTag body(Content... html) throws IOException {
@@ -48,16 +54,16 @@ public class ContainerTag extends Tag {
             writer.write(name);
             writer.write(GT);
         } else {
-            logger.warn(String.format("Attempting to close an already closed <%s> tag", name));
-            throw new HtmlException(HtmlException.Type.TAG_ALREADY_CLOSED, String.format("Attempting to close an already closed <%s> tag", name));
+            logger.warn(String.format("Attempting to close an already closed <%s> tag in %s", name, context));
+            throw new HtmlException(HtmlException.Type.TAG_ALREADY_CLOSED, String.format("Attempting to close an already closed <%s> tag in %s", name, context));
         }
         return this;
     }
 
     public boolean validate() throws HtmlException {
         if (state > 0) {
-            logger.warn(String.format("<%s> tag not closed", name));
-            throw new HtmlException(HtmlException.Type.UNCLOSED_TAG, String.format("<%s> tag not closed", name));
+            logger.warn(String.format("<%s> tag not closed when used in class %s", name, context));
+            throw new HtmlException(HtmlException.Type.UNCLOSED_TAG, String.format("<%s> tag not closed when used in %s", name, context));
         }
         return state == 0;
     }

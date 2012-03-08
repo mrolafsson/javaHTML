@@ -11,7 +11,7 @@ import static junit.framework.Assert.assertEquals;
 public class AbstractHtmlCapabilityTest extends HtmlCapability {
 
     public AbstractHtmlCapabilityTest() {
-        super(new StringWriter());
+        super(new StringWriter(), AbstractHtmlCapabilityTest.class);
     }
 
     protected void assertEquals(String expected, Content actual) {

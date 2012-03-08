@@ -11,9 +11,15 @@ import java.io.Writer;
 public class HtmlCapability {
 
     private Writer writer;
+    private Class context;
 
     public HtmlCapability(Writer writer) {
+        this(writer, HtmlCapability.class);
+    }
+
+    public HtmlCapability(Writer writer, Class context) {
         this.writer = writer;
+        this.context = context;
     }
 
     protected void setWriter(Writer writer) {
@@ -21,60 +27,59 @@ public class HtmlCapability {
     }
 
     public ContainerTag div(Attribute... attr) throws IOException {
-        return new ContainerTag(writer, Tag.DIV, attr);
+        return new ContainerTag(writer, Tag.DIV, context, attr);
     }
 
     public ContainerTag span(Attribute... attr) throws IOException {
-        return new ContainerTag(writer, Tag.SPAN, attr);
+        return new ContainerTag(writer, Tag.SPAN, context, attr);
     }
 
     public ContainerTag h1(Attribute... attr) throws IOException {
-        return new ContainerTag(writer, Tag.H1, attr);
+        return new ContainerTag(writer, Tag.H1, context, attr);
     }
 
     public ContainerTag h2(Attribute... attr) throws IOException {
-        return new ContainerTag(writer, Tag.H2, attr);
+        return new ContainerTag(writer, Tag.H2, context, attr);
     }
 
     public ContainerTag h3(Attribute... attr) throws IOException {
-        return new ContainerTag(writer, Tag.H3, attr);
+        return new ContainerTag(writer, Tag.H3, context, attr);
     }
 
     public ContainerTag h4(Attribute... attr) throws IOException {
-        return new ContainerTag(writer, Tag.H4, attr);
+        return new ContainerTag(writer, Tag.H4, context, attr);
     }
 
     public ContainerTag p(Attribute... attr) throws IOException {
-        return new ContainerTag(writer, Tag.P, attr);
+        return new ContainerTag(writer, Tag.P, context, attr);
     }
 
     public ContainerTag ul(Attribute... attr) throws IOException {
-        return new ContainerTag(writer, Tag.UL, attr);
+        return new ContainerTag(writer, Tag.UL, context, attr);
     }
 
     public ContainerTag ol(Attribute... attr) throws IOException {
-        return new ContainerTag(writer, Tag.OL, attr);
+        return new ContainerTag(writer, Tag.OL, context, attr);
     }
 
     public ContainerTag li(Attribute... attr) throws IOException {
-        return new ContainerTag(writer, Tag.LI, attr);
+        return new ContainerTag(writer, Tag.LI, context, attr);
     }
 
     public ContainerTag dl(Attribute... attr) throws IOException {
-        return new ContainerTag(writer, Tag.DL, attr);
+        return new ContainerTag(writer, Tag.DL, context, attr);
     }
 
-
     public ContainerTag dt(Attribute... attr) throws IOException {
-        return new ContainerTag(writer, Tag.DT, attr);
+        return new ContainerTag(writer, Tag.DT, context, attr);
     }
 
     public ContainerTag dd(Attribute... attr) throws IOException {
-        return new ContainerTag(writer, Tag.DD, attr);
+        return new ContainerTag(writer, Tag.DD, context, attr);
     }
 
     public ContainerTag a(Attribute... attr) throws IOException {
-        return new ContainerTag(writer, Tag.A, attr);
+        return new ContainerTag(writer, Tag.A, context, attr);
     }
 
     public SelfClosingTag img(Attribute... attr) throws IOException {
@@ -82,27 +87,27 @@ public class HtmlCapability {
     }
 
     public ContainerTag form(Attribute... attr) throws IOException {
-        return new ContainerTag(writer, Tag.FORM, attr);
+        return new ContainerTag(writer, Tag.FORM, context, attr);
     }
 
     public ContainerTag input(Attribute... attr) throws IOException {
-        return new ContainerTag(writer, Tag.INPUT, attr);
+        return new ContainerTag(writer, Tag.INPUT, context, attr);
     }
 
     public ContainerTag fieldset(Attribute... attr) throws IOException {
-        return new ContainerTag(writer, Tag.FIELDSET, attr);
+        return new ContainerTag(writer, Tag.FIELDSET, context, attr);
     }
 
     public ContainerTag legend(Attribute... attr) throws IOException {
-        return new ContainerTag(writer, Tag.LEGEND, attr);
+        return new ContainerTag(writer, Tag.LEGEND, context, attr);
     }
 
     public ContainerTag script(Attribute... attr) throws IOException {
-        return new ContainerTag(writer, Tag.SCRIPT, attr);
+        return new ContainerTag(writer, Tag.SCRIPT, context, attr);
     }
 
     public ContainerTag custom(String name, Attribute... attr) throws IOException {
-        return new ContainerTag(writer, name, attr);
+        return new ContainerTag(writer, name, context, attr);
     }
 
     public Text text(String text) throws IOException {
