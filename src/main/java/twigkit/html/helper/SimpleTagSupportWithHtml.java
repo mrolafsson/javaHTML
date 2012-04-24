@@ -156,4 +156,12 @@ public abstract class SimpleTagSupportWithHtml extends SimpleTagSupport {
     public Attribute.Title title(String value) {
         return new Attribute.Title(value);
     }
+
+    public Attribute.Height height(int value) {
+        return new Attribute.Height(value);
+    }
+
+    public Attribute.Width width(int value) {
+        return new Attribute.Width(value);
+    }
 }

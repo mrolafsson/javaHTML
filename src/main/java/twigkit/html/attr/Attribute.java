@@ -34,18 +34,18 @@ import java.util.List;
 public class Attribute {
 
     private static final String CLASS = "class", ID = "id", DATA = "data-", HREF = "href", SRC = "src",
-            TARGET = "target", TITLE = "title";
+            TARGET = "target", TITLE = "title", WIDTH = "width", HEIGHT = "height";
     private static final String SPACE = " ", QUOTE = "\"", EQUALS = "=";
 
     private final String name;
     private final List<String> values;
 
-    public Attribute(String name, String... values) {
+    public Attribute(String name, Object... values) {
         this.name = name;
         this.values = new ArrayList<String>();
-        for (String value : values) {
+        for (Object value : values) {
             if (value != null) {
-                this.values.add(value);
+                this.values.add(value.toString());
             }
         }
     }
@@ -135,6 +135,18 @@ public class Attribute {
     public static class Title extends Attribute {
         public Title(String value) {
             super(TITLE, value);
+        }
+    }
+
+    public static class Width extends Attribute {
+        public Width(int value) {
+            super(WIDTH, value > -1 ? value : null);
+        }
+    }
+
+    public static class Height extends Attribute {
+        public Height(int value) {
+            super(HEIGHT, value > -1 ? value : null);
         }
     }
 }

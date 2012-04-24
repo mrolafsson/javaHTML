@@ -100,4 +100,19 @@ public class AttributeTest {
         Attribute.write(writer, new Attribute.Css("class1", "class2"), new Attribute.Id("something"));
         assertEquals(" class=\"class1 class2\" id=\"something\"", writer.toString());
     }
+
+    @Test
+    public void testWidthAndHeight() throws Exception {
+        Attribute attr = new Attribute.Height(-1);
+        assertEquals("", attr.toString());
+
+        attr = new Attribute.Height(100);
+        assertEquals("height=\"100\"", attr.toString());
+
+        attr = new Attribute.Width(-1);
+        assertEquals("", attr.toString());
+
+        attr = new Attribute.Width(100);
+        assertEquals("width=\"100\"", attr.toString());
+    }
 }
