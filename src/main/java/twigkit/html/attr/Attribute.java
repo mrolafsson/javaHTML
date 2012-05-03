@@ -78,7 +78,7 @@ public class Attribute {
 
     public static void write(Writer writer, Attribute... attributes) throws IOException {
         for (int i = 0; i < attributes.length; i++) {
-            if (attributes[i].values != null && attributes[i].values.size() > 0) {
+            if (attributes[i] != null && attributes[i].values != null && attributes[i].values.size() > 0) {
                 writer.write(SPACE);
                 attributes[i].write(writer);
             }
