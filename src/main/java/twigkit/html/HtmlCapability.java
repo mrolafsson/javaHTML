@@ -13,6 +13,13 @@ public class HtmlCapability {
     private Writer writer;
     private Class context;
 
+    public HtmlCapability() {
+        this((Class) null);
+    }
+
+    public HtmlCapability(Class context) {
+        this(null, context);
+    }
     public HtmlCapability(Writer writer) {
         this(writer, HtmlCapability.class);
     }
@@ -22,7 +29,7 @@ public class HtmlCapability {
         this.context = context;
     }
 
-    protected void setWriter(Writer writer) {
+    public void setWriter(Writer writer) {
         this.writer = writer;
     }
 
@@ -94,6 +101,10 @@ public class HtmlCapability {
         return new ContainerTag(writer, Tag.INPUT, context, attr);
     }
 
+    public SelfClosingTag checkbox(Attribute... attr) throws IOException {
+        return new SelfClosingTag(writer, Tag.INPUT, attr("type", "checkbox"), attr);
+    }
+
     public ContainerTag fieldset(Attribute... attr) throws IOException {
         return new ContainerTag(writer, Tag.FIELDSET, context, attr);
     }
@@ -114,6 +125,7 @@ public class HtmlCapability {
         return new Text(writer, text);
     }
 
+    // Attributes
 
     public Attribute attr(String name, String... values) {
         return new Attribute(name, values);
