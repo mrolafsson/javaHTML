@@ -96,8 +96,8 @@ public class Attribute {
         return writer.toString();
     }
 
-    public static class Css extends Attribute {
-        public Css(String... values) {
+    public static class Class extends Attribute {
+        public Class(String... values) {
             super(CLASS, values);
         }
     }

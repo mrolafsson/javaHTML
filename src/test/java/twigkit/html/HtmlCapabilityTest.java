@@ -48,7 +48,7 @@ public class HtmlCapabilityTest extends AbstractHtmlCapabilityTest {
 
     @Test
     public void testEmptyDivWithAttributes() throws Exception {
-        ContainerTag div = div(css("class1", "class2"), id("something"), data("base", "sql"), attr("onclick", "alert('hello');")).close();
+        ContainerTag div = div(cls("class1", "class2"), id("something"), data("base", "sql"), attr("onclick", "alert('hello');")).close();
         assertEquals("<div class=\"class1 class2\" id=\"something\" data-base=\"sql\" onclick=\"alert('hello');\"></div>", div);
     }
 

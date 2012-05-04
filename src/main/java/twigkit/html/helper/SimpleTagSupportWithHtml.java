@@ -129,8 +129,8 @@ public abstract class SimpleTagSupportWithHtml extends SimpleTagSupport {
         return new Attribute(name, values);
     }
 
-    public Attribute.Css css(String... values) {
-        return new Attribute.Css(values);
+    public Attribute.Class cls(String... values) {
+        return new Attribute.Class(values);
     }
 
     public Attribute.Id id(String id) {

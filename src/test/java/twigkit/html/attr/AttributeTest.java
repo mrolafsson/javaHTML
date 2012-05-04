@@ -54,7 +54,7 @@ public class AttributeTest {
 
     @Test
     public void testCss() throws Exception {
-        Attribute attr = new Attribute.Css("class1", "class2");
+        Attribute attr = new Attribute.Class("class1", "class2");
         assertEquals("class=\"class1 class2\"", attr.toString());
     }
 
@@ -97,7 +97,7 @@ public class AttributeTest {
     @Test
     public void testWriteAttributes() throws Exception {
         StringWriter writer = new StringWriter();
-        Attribute.write(writer, new Attribute.Css("class1", "class2"), new Attribute.Id("something"));
+        Attribute.write(writer, new Attribute.Class("class1", "class2"), new Attribute.Id("something"));
         assertEquals(" class=\"class1 class2\" id=\"something\"", writer.toString());
     }
 
