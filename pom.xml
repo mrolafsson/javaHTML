@@ -9,7 +9,7 @@
     <name>javaHTML</name>
     <description>Stream-based Java HTML Generator.</description>
 
-    <url>http://github.com/twigkit/javaHTML</url>
+    <url>http://github.com/mrolafsson/javaHTML</url>
 
     <licenses>
         <license>
@@ -41,7 +41,7 @@
 
     <issueManagement>
         <system>Github</system>
-        <url>https://github.com/twigkit/javaHTML/issues</url>
+        <url>https://github.com/mrolafsson/javaHTML/issues</url>
     </issueManagement>
 
     <repositories>
