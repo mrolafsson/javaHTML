@@ -33,6 +33,10 @@ public abstract class SimpleTagSupportWithHtml extends SimpleTagSupport {
         htmlCapability.setWriter(writer);
     }
 
+    public ConditionalWrapper when(boolean test) {
+        return htmlCapability.when(test);
+    }
+
     public Attribute.Width width(int value) {
         return htmlCapability.width(value);
     }

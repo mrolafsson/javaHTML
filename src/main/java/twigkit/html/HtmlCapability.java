@@ -20,6 +20,7 @@ public class HtmlCapability {
     public HtmlCapability(Class context) {
         this(null, context);
     }
+
     public HtmlCapability(Writer writer) {
         this(writer, HtmlCapability.class);
     }
@@ -29,8 +30,19 @@ public class HtmlCapability {
         this.context = context;
     }
 
+    public Writer getWriter() {
+        return writer;
+    }
+
     public void setWriter(Writer writer) {
         this.writer = writer;
+    }
+
+    public ConditionalWrapper when(boolean test) {
+        if (!test) {
+            this.writer = new DummyWriter(this);
+        }
+        return new ConditionalWrapper.Use(this);
     }
 
     public ContainerTag div(Attribute... attr) throws IOException {

@@ -15,6 +15,10 @@ public class Content {
 
     @Override
     public String toString() {
-        return writer.toString();
+        if (writer != null) {
+            return writer.toString();
+        } else {
+            return "";
+        }
     }
 }
