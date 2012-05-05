@@ -22,7 +22,7 @@ public abstract class SimpleTagSupportWithHtml extends SimpleTagSupport {
     }
 
     public SimpleTagSupportWithHtml(Class context) {
-        this(new StringWriter(), SimpleTagSupportWithHtml.class);
+        this(new StringWriter(), context);
     }
 
     public SimpleTagSupportWithHtml(Writer writer, Class context) {
