@@ -45,6 +45,12 @@ public class HtmlCapability {
         return new ConditionalWrapper.Use(this);
     }
 
+    public Content exec(Code code) throws IOException {
+        code.setWriter(writer);
+        code.run();
+        return new Content(writer);
+    }
+
     public ContainerTag div(Attribute... attr) throws IOException {
         return new ContainerTag(writer, Tag.DIV, context, attr);
     }

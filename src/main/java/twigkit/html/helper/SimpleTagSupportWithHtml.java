@@ -33,6 +33,10 @@ public abstract class SimpleTagSupportWithHtml extends SimpleTagSupport {
         htmlCapability.setWriter(writer);
     }
 
+    public Content exec(Code code) throws IOException {
+        return htmlCapability.exec(code);
+    }
+
     public ConditionalWrapper when(boolean test) {
         return htmlCapability.when(test);
     }
