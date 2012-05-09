@@ -20,7 +20,7 @@ public class CodeTest extends AbstractHtmlCapabilityTest {
 
                 exec(new Code() {
                     @Override
-                    void run() throws IOException {
+                    public void run() throws IOException {
                         message[0] = "bar";
                     }
                 }),
@@ -40,7 +40,7 @@ public class CodeTest extends AbstractHtmlCapabilityTest {
                 ),
                 exec(new Code() {
                     @Override
-                    void run() throws IOException {
+                    public void run() throws IOException {
                         text("&nbsp;");
                     }
                 }),

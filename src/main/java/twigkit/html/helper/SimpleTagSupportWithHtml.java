@@ -33,7 +33,7 @@ public abstract class SimpleTagSupportWithHtml extends SimpleTagSupport {
         htmlCapability.setWriter(writer);
     }
 
-    public Content exec(Code code) throws IOException {
+    public Content exec(Code code) throws JspException, IOException {
         return htmlCapability.exec(code);
     }
 

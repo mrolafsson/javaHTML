@@ -1,5 +1,6 @@
 package twigkit.html;
 
+import javax.servlet.jsp.JspException;
 import java.io.IOException;
 import java.io.Writer;
 
@@ -12,5 +13,5 @@ public abstract class Code extends HtmlCapability {
         super.setWriter(writer);
     }
 
-    abstract void run() throws IOException;
+    public abstract void run() throws JspException, IOException;
 }

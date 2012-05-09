@@ -2,6 +2,7 @@ package twigkit.html;
 
 import twigkit.html.attr.Attribute;
 
+import javax.servlet.jsp.JspException;
 import java.io.IOException;
 import java.io.Writer;
 
@@ -45,7 +46,7 @@ public class HtmlCapability {
         return new ConditionalWrapper.Use(this);
     }
 
-    public Content exec(Code code) throws IOException {
+    public Content exec(Code code) throws JspException, IOException {
         code.setWriter(writer);
         code.run();
         return new Content(writer);
