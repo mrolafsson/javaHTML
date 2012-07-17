@@ -20,6 +20,9 @@
  */
 package twigkit.html.attr;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.IOException;
 import java.io.StringWriter;
 import java.io.Writer;
@@ -32,6 +35,8 @@ import java.util.List;
  * @author mr.olafsson
  */
 public class Attribute {
+
+    private static final Logger logger = LoggerFactory.getLogger(Attribute.class);
 
     private static final String CLASS = "class", ID = "id", DATA = "data-", HREF = "href", SRC = "src",
             TARGET = "target", TITLE = "title", WIDTH = "width", HEIGHT = "height";
@@ -91,7 +96,7 @@ public class Attribute {
         try {
             write(writer);
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error("Failed to write Attribute", e);
         }
         return writer.toString();
     }
