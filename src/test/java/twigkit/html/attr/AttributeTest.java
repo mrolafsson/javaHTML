@@ -53,6 +53,14 @@ public class AttributeTest {
     }
 
     @Test
+    public void testClone() throws Exception {
+        Attribute attr = new Attribute("name", "value1", "value2", "value3");
+        Attribute clone = attr.clone().add("value4");
+
+        System.out.println(clone.toString());
+    }
+
+    @Test
     public void testCss() throws Exception {
         Attribute attr = new Attribute.Class("class1", "class2");
         assertEquals("class=\"class1 class2\"", attr.toString());

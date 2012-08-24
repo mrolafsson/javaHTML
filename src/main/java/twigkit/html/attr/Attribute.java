@@ -91,6 +91,11 @@ public class Attribute {
     }
 
     @Override
+    public Attribute clone() {
+        return new Attribute(name, values.toArray(new String[values.size()]));
+    }
+
+    @Override
     public String toString() {
         StringWriter writer = new StringWriter();
         try {
