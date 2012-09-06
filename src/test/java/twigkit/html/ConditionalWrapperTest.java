@@ -17,7 +17,7 @@ public class ConditionalWrapperTest extends AbstractHtmlCapabilityTest {
                                 text(" world!")
                         ),
                         span().body(
-                            text("Go go go!")
+                                text("Go go go!")
                         )
                 ).otherwise(
                         text("No hello!")
@@ -43,5 +43,22 @@ public class ConditionalWrapperTest extends AbstractHtmlCapabilityTest {
 
         );
         assertEquals("<div>No hello!</div>", div);
+    }
+
+    @Test
+    public void testNoOtherwise() throws Exception {
+        ContainerTag div = div().body(
+                when(false).use(
+                        span().body(
+                                text("Hello"),
+                                text(" world!")
+                        ),
+                        span().body(
+                                text("Go go go!")
+                        )
+                ),
+                span().body(text("no others"))
+        );
+        assertEquals("<div><span>no others</span></div>", div);
     }
 }
