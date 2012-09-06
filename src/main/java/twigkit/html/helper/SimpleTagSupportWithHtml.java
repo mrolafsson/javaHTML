@@ -172,4 +172,8 @@ public abstract class SimpleTagSupportWithHtml extends SimpleTagSupport {
     public ContainerTag h3(Attribute... attr) throws IOException {
         return htmlCapability.h3(attr);
     }
+
+    public Attribute when(boolean test, Attribute attr) {
+        return htmlCapability.when(test, attr);
+    }
 }

@@ -146,6 +146,13 @@ public class HtmlCapability {
 
     // Attributes
 
+    public Attribute when(boolean test, Attribute attr) {
+        if (test) {
+            return attr;
+        }
+        return null;
+    }
+
     public Attribute attr(String name, String... values) {
         return new Attribute(name, values);
     }

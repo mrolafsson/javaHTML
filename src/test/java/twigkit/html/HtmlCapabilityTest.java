@@ -75,4 +75,10 @@ public class HtmlCapabilityTest extends AbstractHtmlCapabilityTest {
         ContainerTag div = div().body("Hello", " ", "world!");
         assertEquals("<div>Hello world!</div>", div);
     }
+
+    @Test
+    public void testConditionalAttribute() throws Exception {
+        ContainerTag div = div(when(true, cls("foo")), when(false, id("no-id"))).close();
+        assertEquals("<div class=\"foo\"></div>", div);
+    }
 }
