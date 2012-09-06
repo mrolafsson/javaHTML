@@ -32,7 +32,24 @@ public class ContainerTag extends Tag {
         return this;
     }
 
+    public ContainerTag body(String... text) throws IOException {
+        append(text);
+        close();
+        return this;
+    }
+
     public ContainerTag append(Content... html) {
+        return this;
+    }
+
+    public ContainerTag append(String... text) {
+        try {
+            for (String s : text) {
+                new Text(writer, s);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return this;
     }
 

@@ -69,4 +69,10 @@ public class HtmlCapabilityTest extends AbstractHtmlCapabilityTest {
         ).close();
         assertEquals("<div>Hello world!</div>", div);
     }
+
+    @Test
+    public void testBodyWithoutText() throws Exception {
+        ContainerTag div = div().body("Hello", " ", "world!");
+        assertEquals("<div>Hello world!</div>", div);
+    }
 }
