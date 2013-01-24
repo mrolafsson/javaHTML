@@ -10,6 +10,8 @@ public class Text extends Content {
 
     public Text(Writer writer, String text) throws IOException {
         super(writer);
-        writer.write(text);
+        if (text != null) {
+            writer.write(text);
+        }
     }
 }

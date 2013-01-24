@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>twigkit</groupId>
     <artifactId>javaHTML</artifactId>
-    <version>1.0</version>
+    <version>1.1</version>
     <packaging>jar</packaging>
     <name>javaHTML</name>
     <description>Stream-based Java HTML Generator.</description>
@@ -48,7 +48,7 @@
         <repository>
             <id>repo.twigkit.com</id>
             <name>TwigKit</name>
-            <url>http://twigkit.artifactoryonline.com/twigkit/</url>
+            <url>http://twigkit.artifactoryonline.com/twigkit/repo/</url>
             <releases>
                 <enabled>true</enabled>
                 <updatePolicy>never</updatePolicy>
