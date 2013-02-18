@@ -3,6 +3,8 @@ package twigkit.html;
 import org.junit.Test;
 
 /**
+ * Unit tests for the {@link HtmlCapability} class.
+ *
  * @author mr.olafsson
  */
 public class HtmlCapabilityTest extends AbstractHtmlCapabilityTest {
@@ -15,6 +17,8 @@ public class HtmlCapabilityTest extends AbstractHtmlCapabilityTest {
         assertEquals("<h2></h2>", h2().close());
         assertEquals("<h3></h3>", h3().close());
         assertEquals("<h4></h4>", h4().close());
+        assertEquals("<h5></h5>", h5().close());
+        assertEquals("<h6></h6>", h6().close());
         assertEquals("<p></p>", p().close());
         assertEquals("<ol></ol>", ol().close());
         assertEquals("<ul></ul>", ul().close());
@@ -38,7 +42,8 @@ public class HtmlCapabilityTest extends AbstractHtmlCapabilityTest {
 
     @Test
     public void testSelfClosingTags() throws Exception {
-        assertEquals("<img id=\"image\" src=\"pic.png\" />", img(id("image"), src("pic.png")));
+        assertEquals("<img id=\"image\" src=\"pic.png\" width=\"100\" height=\"200\" />", img(id("image"), src("pic.png"), width(100), height(200)));
+        assertEquals("<input type=\"checkbox\" />", checkbox());
     }
 
     @Test
@@ -48,8 +53,8 @@ public class HtmlCapabilityTest extends AbstractHtmlCapabilityTest {
 
     @Test
     public void testEmptyDivWithAttributes() throws Exception {
-        ContainerTag div = div(cls("class1", "class2"), id("something"), data("base", "sql"), attr("onclick", "alert('hello');")).close();
-        assertEquals("<div class=\"class1 class2\" id=\"something\" data-base=\"sql\" onclick=\"alert('hello');\"></div>", div);
+        ContainerTag div = div(style("display: none;"), cls("class1", "class2"), id("something"), data("base", "sql"), attr("onclick", "alert('hello');")).close();
+        assertEquals("<div style=\"display: none;\" class=\"class1 class2\" id=\"something\" data-base=\"sql\" onclick=\"alert('hello');\"></div>", div);
     }
 
     @Test

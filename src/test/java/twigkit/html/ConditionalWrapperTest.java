@@ -3,6 +3,8 @@ package twigkit.html;
 import org.junit.Test;
 
 /**
+ * Unit tests for the {@link ConditionalWrapper} classes.
+ *
  * @author mr.olafsson
  */
 public class ConditionalWrapperTest extends AbstractHtmlCapabilityTest {

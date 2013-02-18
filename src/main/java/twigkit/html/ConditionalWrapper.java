@@ -3,6 +3,13 @@ package twigkit.html;
 import java.io.Writer;
 
 /**
+ * Use it to conditionally add {@link Content} inline based on a boolean test using {@link Use} and {@link Otherwise}
+ * wrappers.
+ *
+ * Important: Irrespective of which conditional wrapper is executed, all code in the body WILL BE EXECUTED the only
+ * difference is that {@link Content} tags will not write anything to the stream because they will be passed
+ * a {@link DummyWriter}.
+ *
  * @author mr.olafsson
  */
 public abstract class ConditionalWrapper extends Content {

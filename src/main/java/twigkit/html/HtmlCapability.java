@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.io.Writer;
 
 /**
+ * Extend or statically import {@link HtmlCapability} to use the helper methods that create {@link Content}.
+ *
  * @author mr.olafsson
  */
 public class HtmlCapability {
@@ -39,6 +41,12 @@ public class HtmlCapability {
         this.writer = writer;
     }
 
+    /**
+     * Start conditional output.
+     *
+     * @param test
+     * @return
+     */
     public ConditionalWrapper when(boolean test) {
         if (!test) {
             this.writer = new DummyWriter(this);
@@ -46,52 +54,158 @@ public class HtmlCapability {
         return new ConditionalWrapper.Use(this);
     }
 
+    /**
+     * Execute code inline by passing in and implementing an instance of {@link Code}.
+     *
+     * @param code
+     * @return
+     * @throws JspException
+     * @throws IOException
+     */
     public Content exec(Code code) throws JspException, IOException {
         code.setWriter(writer);
         code.run();
         return new Content(writer);
     }
 
+    /**
+     * Create a 'div' element.
+     *
+     * @param attr
+     * @return
+     * @throws IOException
+     */
     public ContainerTag div(Attribute... attr) throws IOException {
         return new ContainerTag(writer, Tag.DIV, context, attr);
     }
 
+    /**
+     * Create a 'span' element.
+     *
+     * @param attr
+     * @return
+     * @throws IOException
+     */
     public ContainerTag span(Attribute... attr) throws IOException {
         return new ContainerTag(writer, Tag.SPAN, context, attr);
     }
 
+    /**
+     * Create an 'h1' element.
+     * @param attr
+     * @return
+     * @throws IOException
+     */
     public ContainerTag h1(Attribute... attr) throws IOException {
         return new ContainerTag(writer, Tag.H1, context, attr);
     }
 
+    /**
+     * Create an 'h2' element.
+     *
+     * @param attr
+     * @return
+     * @throws IOException
+     */
     public ContainerTag h2(Attribute... attr) throws IOException {
         return new ContainerTag(writer, Tag.H2, context, attr);
     }
 
+    /**
+     * Create an 'h3' element.
+     *
+     * @param attr
+     * @return
+     * @throws IOException
+     */
     public ContainerTag h3(Attribute... attr) throws IOException {
         return new ContainerTag(writer, Tag.H3, context, attr);
     }
 
+    /**
+     * Create an 'h4' element.
+     *
+     * @param attr
+     * @return
+     * @throws IOException
+     */
     public ContainerTag h4(Attribute... attr) throws IOException {
         return new ContainerTag(writer, Tag.H4, context, attr);
     }
 
+    /**
+     * Create an 'h5' element.
+     *
+     * @param attr
+     * @return
+     * @throws IOException
+     */
+    public ContainerTag h5(Attribute... attr) throws IOException {
+        return new ContainerTag(writer, Tag.H5, context, attr);
+    }
+
+    /**
+     * Create an 'h6' element.
+     *
+     * @param attr
+     * @return
+     * @throws IOException
+     */
+    public ContainerTag h6(Attribute... attr) throws IOException {
+        return new ContainerTag(writer, Tag.H6, context, attr);
+    }
+
+    /**
+     * Create a paragraph element.
+     *
+     * @param attr
+     * @return
+     * @throws IOException
+     */
     public ContainerTag p(Attribute... attr) throws IOException {
         return new ContainerTag(writer, Tag.P, context, attr);
     }
 
+    /**
+     * Create an unordered list.
+     *
+     * @param attr
+     * @return
+     * @throws IOException
+     */
     public ContainerTag ul(Attribute... attr) throws IOException {
         return new ContainerTag(writer, Tag.UL, context, attr);
     }
 
+    /**
+     * Create an ordered list.
+     *
+     * @param attr
+     * @return
+     * @throws IOException
+     */
     public ContainerTag ol(Attribute... attr) throws IOException {
         return new ContainerTag(writer, Tag.OL, context, attr);
     }
 
+    /**
+     * Create a list item element.
+     *
+     * @param attr
+     * @return
+     * @throws IOException
+     */
     public ContainerTag li(Attribute... attr) throws IOException {
         return new ContainerTag(writer, Tag.LI, context, attr);
     }
 
+    /**
+     * Create a definition list element.
+     *
+     * @param attr
+     * @return
+     * @throws IOException
+     */
     public ContainerTag dl(Attribute... attr) throws IOException {
         return new ContainerTag(writer, Tag.DL, context, attr);
     }
@@ -183,6 +297,10 @@ public class HtmlCapability {
 
     public Attribute.Title title(String value) {
         return new Attribute.Title(value);
+    }
+
+    public Attribute.Style style(String value) {
+        return new Attribute.Style(value);
     }
 
     public Attribute.Height height(int value) {

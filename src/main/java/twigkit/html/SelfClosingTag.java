@@ -6,7 +6,9 @@ import java.io.IOException;
 import java.io.Writer;
 
 /**
+ * Represents tags that can be self-closing e.g. `<img src="" />`, <br />.
  *
+ * @author mr.olafsson
  */
 public class SelfClosingTag extends Tag {
 
@@ -29,11 +31,13 @@ public class SelfClosingTag extends Tag {
         writer.write(LT);
         writer.write(name);
         if (attribute != null) {
-        Attribute.write(writer, attribute);
+            Attribute.write(writer, attribute);
             writer.write(SPACE);
         }
         Attribute.write(writer, attributes);
-        writer.write(SPACE);
+        if (attributes != null && attributes.length > 0) {
+            writer.write(SPACE);
+        }
         writer.write(SLASH);
         writer.write(GT);
     }

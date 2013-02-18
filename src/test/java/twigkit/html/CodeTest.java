@@ -5,6 +5,8 @@ import org.junit.Test;
 import java.io.IOException;
 
 /**
+ * Unit tests for the {@link Code} class and the {@link #exec(Code)} method.
+ *
  * @author mr.olafsson
  */
 public class CodeTest extends AbstractHtmlCapabilityTest {

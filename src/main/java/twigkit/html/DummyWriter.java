@@ -4,11 +4,10 @@ import java.io.IOException;
 import java.io.Writer;
 
 /**
- * Created with IntelliJ IDEA.
- * User: hjortur
- * Date: 05/05/2012
- * Time: 22:23
- * To change this template use File | Settings | File Templates.
+ * An implementation of {@link Writer} that does not write anything but has the capability to hand back the
+ * real {@link Writer} using {@link #getReal()}. This is used e.g. in the {@link ConditionalWrapper}.
+ *
+ * @author mr.olafsson
  */
 public class DummyWriter extends Writer {
 
@@ -23,7 +22,7 @@ public class DummyWriter extends Writer {
     }
 
     protected DummyWriter(Object o) {
-        super(o);    //To change body of overridden methods use File | Settings | File Templates.
+        super(o);
     }
 
     @Override

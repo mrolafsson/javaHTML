@@ -32,6 +32,8 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
+ * Represents an element attribute on a tag.
+ *
  * @author mr.olafsson
  */
 public class Attribute {
@@ -40,7 +42,7 @@ public class Attribute {
 
     private static final String CLASS = "class", ID = "id", DATA = "data-", HREF = "href", SRC = "src",
             TARGET = "target", TITLE = "title", WIDTH = "width", HEIGHT = "height";
-    private static final String SPACE = " ", QUOTE = "\"", EQUALS = "=";
+    private static final String SPACE = " ", QUOTE = "\"", EQUALS = "=", STYLE = "style";
 
     private final String name;
     private final List<String> values;
@@ -145,6 +147,12 @@ public class Attribute {
     public static class Title extends Attribute {
         public Title(String value) {
             super(TITLE, value);
+        }
+    }
+
+    public static class Style extends Attribute {
+        public Style(String value) {
+            super(STYLE, value);
         }
     }
 

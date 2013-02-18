@@ -6,6 +6,8 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 /**
+ * Unit tests for the {@link ContainerTag} class.
+ *
  * @author mr.olafsson
  */
 public class ContainerTagTest extends AbstractHtmlCapabilityTest {

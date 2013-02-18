@@ -8,7 +8,9 @@ import java.io.IOException;
 import java.io.Writer;
 
 /**
+ * Represents HTML elements or {@link Tag}s that can contain other elements or content.
  *
+ * @author mr.olafsson
  */
 public class ContainerTag extends Tag {
 

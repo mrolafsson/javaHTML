@@ -3,7 +3,9 @@ package twigkit.html;
 import java.io.Writer;
 
 /**
+ * Represents any type of content that can be written to the stream.
  *
+ * @author mr.olafsson
  */
 public class Content {
 
