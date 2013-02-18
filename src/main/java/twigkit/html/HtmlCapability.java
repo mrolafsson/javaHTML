@@ -310,4 +310,9 @@ public class HtmlCapability {
     public Attribute.Width width(int value) {
         return new Attribute.Width(value);
     }
+
+    public Content iterate(Loop iterate) {
+        iterate.run();
+        return new Content(writer);
+    }
 }

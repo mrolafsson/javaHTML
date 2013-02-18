@@ -1,6 +1,7 @@
 package twigkit.html.helper;
 
 import twigkit.html.*;
+import twigkit.html.Loop;
 import twigkit.html.attr.Attribute;
 
 import javax.servlet.jsp.JspException;
@@ -192,5 +193,9 @@ public abstract class SimpleTagSupportWithHtml extends SimpleTagSupport {
 
     public Attribute.Width width(int value) {
         return htmlCapability.width(value);
+    }
+
+    public Content iterate(Loop iterate) {
+        return htmlCapability.iterate(iterate);
     }
 }
