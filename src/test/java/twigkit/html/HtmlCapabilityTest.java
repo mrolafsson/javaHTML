@@ -23,6 +23,7 @@ public class HtmlCapabilityTest extends AbstractHtmlCapabilityTest {
         assertEquals("<h5></h5>", h5().close());
         assertEquals("<h6></h6>", h6().close());
         assertEquals("<p></p>", p().close());
+        assertEquals("<em></em>", em().close());
         assertEquals("<ol></ol>", ol().close());
         assertEquals("<ul></ul>", ul().close());
         assertEquals("<li></li>", li().close());
@@ -35,6 +36,7 @@ public class HtmlCapabilityTest extends AbstractHtmlCapabilityTest {
         assertEquals("<fieldset></fieldset>", fieldset().close());
         assertEquals("<legend></legend>", legend().close());
         assertEquals("<script></script>", script().close());
+
         assertEquals("<blink></blink>", custom("blink").close());
     }
 

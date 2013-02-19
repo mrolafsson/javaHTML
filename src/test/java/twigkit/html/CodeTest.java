@@ -2,9 +2,12 @@ package twigkit.html;
 
 import org.junit.Test;
 
+import javax.servlet.jsp.JspException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Random;
 
 import static junit.framework.Assert.assertTrue;
 
@@ -14,6 +17,26 @@ import static junit.framework.Assert.assertTrue;
  * @author mr.olafsson
  */
 public class CodeTest extends AbstractHtmlCapabilityTest {
+
+    @Test
+    public void testTomAndJerry() throws Exception {
+        final Random random = new Random();
+        Content statement = h1().with(
+                text("Tom "),
+                exec(new Code() {
+                    @Override
+                    public void run() throws JspException, IOException {
+                        if (random.nextBoolean()) {
+                            em().with("hates");
+                        } else {
+                            span().with("likes");
+                        }
+                    }
+                }),
+                text(" Jerry")
+        );
+        System.out.println(statement);
+    }
 
     @Test
     public void testCodeWrapper() throws Exception {

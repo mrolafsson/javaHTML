@@ -190,12 +190,16 @@ public abstract class HtmlSimpleTagSupport extends SimpleTagSupport {
         return htmlCapability.width(value);
     }
 
-    public Content exec(Code code) throws JspException, IOException {
-        return htmlCapability.exec(code);
+    public ContainerTag em(Attribute... attr) throws IOException {
+        return htmlCapability.em(attr);
     }
 
     public ContainerTag form(Attribute... attr) throws IOException {
         return htmlCapability.form(attr);
+    }
+
+    public Content exec(Code code) throws JspException, IOException {
+        return htmlCapability.exec(code);
     }
 
     public Attribute attr(String name, String... values) {

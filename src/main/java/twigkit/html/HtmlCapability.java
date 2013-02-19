@@ -108,6 +108,10 @@ public class HtmlCapability {
         return new ContainerTag(writer, Tag.SPAN, context, attr);
     }
 
+    public ContainerTag em(Attribute... attr) throws IOException {
+        return new ContainerTag(writer, Tag.EM, context, attr);
+    }
+
     /**
      * Create an 'h1' element.
      * @param attr

@@ -70,6 +70,26 @@ It's good policy to call `validate()` at the end of the HTML generation to make 
 #### Container Tags
 If they do not contain elements in the body (added using `with()` method) you must call `close()` at the end.
 
+#### Missing or Custom Tags?
+You can add any tag or element using the `custom()` method:
+
+	custom("blink").with("Las Vegas Baby!")
+
+Would generate:
+	
+`<blink>Las Vegas Baby</blink>`
+	
+You can add attributes to custom tags like any other:
+
+	custom("strong", style("background-color: red;")).with("Rocky!")
+	
+Would generate:
+
+`<strong style="background-color: red;">Rocky!</strong>`
+	
+#### Attributes
+
+
 ### Conditionals
 You can conditionally output data using a `when()` expression:
 
@@ -112,10 +132,18 @@ An `iterate()` behaves just like any other content which means you can add other
 ### Custom Code
 You can execute any code inline using the `exec()` method and passing it an instance of `Code` where you implement the `run()` method:
 
-	exec(new Code() {
-	    @Override
-	    public void run() throws IOException {
-	    	// You can do anything here with external final members and generate HTML inline!
-	        text("&nbsp;");
-	    }
-	})
+	final Random random = new Random();
+	h1().with(
+	    text("Tom "),
+	    exec(new Code() {
+	        @Override
+	        public void run() throws JspException, IOException {
+	            if (random.nextBoolean()) {
+	                em().with("hates");
+	            } else {
+	                span().with("likes");
+	            }
+	        }
+	    }),
+	    text(" Jerry")
+	);
