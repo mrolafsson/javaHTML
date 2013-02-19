@@ -147,3 +147,5 @@ You can execute any code inline using the `exec()` method and passing it an inst
 	    }),
 	    text(" Jerry")
 	);
+	
+If you use the `exec()` method in a `when()` conditional block it will only execute if the condition was met.
