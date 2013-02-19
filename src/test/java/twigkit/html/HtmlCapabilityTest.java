@@ -11,6 +11,9 @@ public class HtmlCapabilityTest extends AbstractHtmlCapabilityTest {
 
     @Test
     public void testContainerTags() throws Exception {
+        assertEquals("<html></html>", html().close());
+        assertEquals("<body></body>", body().close());
+        assertEquals("<head></head>", head().close());
         assertEquals("<div></div>", div().close());
         assertEquals("<span></span>", span().close());
         assertEquals("<h1></h1>", h1().close());
@@ -44,6 +47,7 @@ public class HtmlCapabilityTest extends AbstractHtmlCapabilityTest {
     public void testSelfClosingTags() throws Exception {
         assertEquals("<img id=\"image\" src=\"pic.png\" width=\"100\" height=\"200\" />", img(id("image"), src("pic.png"), width(100), height(200)));
         assertEquals("<input type=\"checkbox\" />", checkbox());
+        assertEquals("<meta charset=\"UTF-8\" />", meta(attr("charset", "UTF-8")));
     }
 
     @Test

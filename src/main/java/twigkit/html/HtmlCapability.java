@@ -41,6 +41,22 @@ public class HtmlCapability {
         this.writer = writer;
     }
 
+    public ContainerTag html(Attribute... attr) throws IOException {
+        return new ContainerTag(writer, Tag.HTML, context, attr);
+    }
+
+    public ContainerTag body(Attribute... attr) throws IOException {
+        return new ContainerTag(writer, Tag.BODY, context, attr);
+    }
+
+    public ContainerTag head(Attribute... attr) throws IOException {
+        return new ContainerTag(writer, Tag.HEAD, context, attr);
+    }
+
+    public Content meta(Attribute... attr) throws IOException {
+        return new SelfClosingTag(writer, Tag.META, attr);
+    }
+
     /**
      * Start conditional output.
      *

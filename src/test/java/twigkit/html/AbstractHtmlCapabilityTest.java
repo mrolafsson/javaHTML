@@ -1,13 +1,13 @@
 package twigkit.html;
 
-import twigkit.html.helper.SimpleTagSupportWithHtml;
-
 import java.io.StringWriter;
 
 /**
+ * Abstract class to make it easier to test {@link HtmlCapability}.
+ *
  * @author mr.olafsson
  */
-public class AbstractHtmlCapabilityTest extends SimpleTagSupportWithHtml {
+public class AbstractHtmlCapabilityTest extends HtmlCapability {
 
     public AbstractHtmlCapabilityTest() {
         super(new StringWriter(), AbstractHtmlCapabilityTest.class);

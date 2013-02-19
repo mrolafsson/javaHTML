@@ -1,44 +1,49 @@
 package twigkit.html.helper;
 
 import twigkit.html.*;
-import twigkit.html.Loop;
 import twigkit.html.attr.Attribute;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.jsp.JspException;
-import javax.servlet.jsp.tagext.SimpleTagSupport;
 import java.io.IOException;
-import java.io.StringWriter;
-import java.io.Writer;
 
 /**
- * Helper class for adding {@link HtmlCapability} when using {@link SimpleTagSupport}.
- *
  * @author mr.olafsson
  */
-public abstract class SimpleTagSupportWithHtml extends SimpleTagSupport {
+public abstract class HtmlHttpServlet extends HttpServlet {
 
     private HtmlCapability htmlCapability;
 
     @Override
-    public void doTag() throws JspException, IOException {
-        setWriter(getJspContext().getOut());
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        htmlCapability = new HtmlCapability(resp.getWriter(), HtmlHttpServlet.class);
+        doGetHtml(req, resp);
     }
 
-    public SimpleTagSupportWithHtml(Class context) {
-        this(new StringWriter(), context);
-    }
-
-    public SimpleTagSupportWithHtml(Writer writer, Class context) {
-        this.htmlCapability = new HtmlCapability(writer, context);
-    }
-
-    public void setWriter(Writer writer) {
-        htmlCapability.setWriter(writer);
-    }
+    protected abstract void doGetHtml(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException;
 
     /**
      * Delegate methods
      */
+    public ContainerTag html(Attribute... attr) throws IOException {
+        return htmlCapability.html(attr);
+    }
+
+    public ContainerTag body(Attribute... attr) throws IOException {
+        return htmlCapability.body(attr);
+    }
+
+    public ContainerTag head(Attribute... attr) throws IOException {
+        return htmlCapability.head(attr);
+    }
+
+    public Content meta(Attribute... attr) throws IOException {
+        return htmlCapability.meta(attr);
+    }
+
     public ConditionalWrapper when(boolean test) {
         return htmlCapability.when(test);
     }
