@@ -148,7 +148,7 @@ public abstract class HtmlHttpServlet extends HttpServlet {
         return htmlCapability.custom(name, attr);
     }
 
-    public Text text(String text) throws IOException {
+    public Text text(Object text) throws IOException {
         return htmlCapability.text(text);
     }
 

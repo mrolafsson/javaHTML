@@ -10,10 +10,10 @@ import java.io.Writer;
  */
 public class Text extends Content {
 
-    public Text(Writer writer, String text) throws IOException {
+    public Text(Writer writer, Object text) throws IOException {
         super(writer);
         if (text != null) {
-            writer.write(text);
+            writer.write(text.toString());
         }
     }
 }

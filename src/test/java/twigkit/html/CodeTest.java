@@ -3,6 +3,10 @@ package twigkit.html;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import static junit.framework.Assert.assertTrue;
 
 /**
  * Unit tests for the {@link Code} class and the {@link #exec(Code)} method.
@@ -51,5 +55,46 @@ public class CodeTest extends AbstractHtmlCapabilityTest {
                 )
         );
         assertEquals("<div><span>foo</span>&nbsp;<span>bar</span></div>", div);
+    }
+
+    @Test
+    public void testConditionalCode() throws Exception {
+        final List<String> list = new ArrayList<String>();
+
+        ContainerTag div = div().with(
+                when(true).use(
+                        exec(new Code() {
+                            @Override
+                            public void run() throws IOException {
+                                list.add("Groucho");
+                            }
+                        })
+                ).otherwise(
+                        exec(new Code() {
+                            @Override
+                            public void run() throws IOException {
+                                list.add("Tom");
+                            }
+                        })
+                ),
+                when(false).use(
+                        exec(new Code() {
+                            @Override
+                            public void run() throws IOException {
+                                list.add("Zeppo");
+                            }
+                        })
+                ).otherwise(
+                        exec(new Code() {
+                            @Override
+                            public void run() throws IOException {
+                                list.add("Jerry");
+                            }
+                        })
+                )
+        );
+        assertTrue(list.size() == 2);
+        assertTrue("Groucho".equals(list.get(0)));
+        assertTrue("Jerry".equals(list.get(1)));
     }
 }

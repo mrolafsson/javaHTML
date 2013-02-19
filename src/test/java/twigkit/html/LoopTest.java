@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 /**
- *
  * @author mr.olafsson
  */
 public class LoopTest extends AbstractHtmlCapabilityTest {
@@ -18,6 +17,21 @@ public class LoopTest extends AbstractHtmlCapabilityTest {
                     @Override
                     public void each(Foo foo) throws Exception {
                         li().with(foo.bar);
+                    }
+                })
+        ));
+    }
+
+    @Test
+    public void testIntegerArray() throws Exception {
+        assertEquals("<dl><dt>Fibonacci Series</dt><dd>0</dd><dd>1</dd><dd>1</dd><dd>2</dd><dd>3</dd><dd>5</dd><dd>8</dd></dl>", dl().with(
+                dt().with(
+                        text("Fibonacci Series")
+                ),
+                iterate(new Loop<Integer>(0, 1, 1, 2, 3, 5, 8) {
+                    @Override
+                    public void each(Integer fib) throws Exception {
+                        dd().with(text(fib));
                     }
                 })
         ));

@@ -80,7 +80,9 @@ public class HtmlCapability {
      */
     public Content exec(Code code) throws JspException, IOException {
         code.setWriter(writer);
-        code.run();
+        if (writer != null && !(writer instanceof DummyWriter)) {
+            code.run();
+        }
         return new Content(writer);
     }
 
@@ -270,7 +272,7 @@ public class HtmlCapability {
         return new ContainerTag(writer, name, context, attr);
     }
 
-    public Text text(String text) throws IOException {
+    public Text text(Object text) throws IOException {
         return new Text(writer, text);
     }
 

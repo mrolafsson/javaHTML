@@ -70,7 +70,7 @@ public abstract class HtmlSimpleTagSupport extends SimpleTagSupport {
         return htmlCapability.li(attr);
     }
 
-    public Text text(String text) throws IOException {
+    public Text text(Object text) throws IOException {
         return htmlCapability.text(text);
     }
 

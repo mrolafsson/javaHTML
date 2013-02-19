@@ -2,12 +2,26 @@ package twigkit.html;
 
 import org.junit.Test;
 
+import java.util.Calendar;
+
 /**
  * Unit tests for the {@link ConditionalWrapper} classes.
  *
  * @author mr.olafsson
  */
 public class ConditionalWrapperTest extends AbstractHtmlCapabilityTest {
+
+    @Test
+    public void testUsingComplexExpression() throws Exception {
+        Content greeting = div().with(
+                when(Calendar.getInstance().get(Calendar.HOUR_OF_DAY) < 11).use(
+                        h1().with("Good morning!")
+                ).otherwise(
+                        h2().with("Hello!")
+                )
+        );
+        System.out.println(greeting);
+    }
 
     @Test
     public void testTrue() throws Exception {

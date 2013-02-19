@@ -6,9 +6,10 @@ import java.io.Writer;
  * Use it to conditionally add {@link Content} inline based on a boolean test using {@link Use} and {@link Otherwise}
  * wrappers.
  *
- * Important: Irrespective of which conditional wrapper is executed, all code in the body WILL BE EXECUTED the only
+ * Important: Irrespective of which conditional wrapper is executed, all code in the body WILL STILL BE EXECUTED the only
  * difference is that {@link Content} tags will not write anything to the stream because they will be passed
- * a {@link DummyWriter}.
+ * a {@link DummyWriter}. As a workaround, if you use the {@link HtmlCapability#exec(Code)} method and pass it a {@link Code} instance then
+ * that code will only be run if the condition is met.
  *
  * @author mr.olafsson
  */
