@@ -64,16 +64,32 @@ Use the `Create` class and either use the default `toString()` method or pass in
 
 ### Tags
 
+#### Container Tags
+Most of the tags are not self-closing and can contain other elements. These are added by passing them to the `with()` method:
+
+	ol().with(
+		li().with("Groucho"),
+		li().with("Zeppo")
+	);
+	
+Important: If no elements are added to the body of the tag(added using `with()` method) you must call `close()` at the end.
+
+	ol( cls("empty-list") ).close();
+
 ##### Validate
 It's good policy to call `validate()` at the end of the HTML generation to make sure all tags were properly closed.
 
-#### Container Tags
-If they do not contain elements in the body (added using `with()` method) you must call `close()` at the end.
+	ol().with(
+		li().with("Groucho"),
+		li().with("Zeppo")
+	).validate();
+	
+Failure to close elements or otherwise invalid markup will be logged out at a `warn` level.
 
 #### Missing or Custom Tags?
 You can add any tag or element using the `custom()` method:
 
-	custom("blink").with("Las Vegas Baby!")
+	custom("blink").with("Las Vegas Baby!");
 
 Would generate:
 	
@@ -81,14 +97,20 @@ Would generate:
 	
 You can add attributes to custom tags like any other:
 
-	custom("strong", style("background-color: red;")).with("Rocky!")
+	custom("strong", style("background-color: red;")).with("Rocky!");
 	
 Would generate:
 
 `<strong style="background-color: red;">Rocky!</strong>`
 	
 #### Attributes
+You can add attributes to the HTML tags by declaring them as formal parameters to the tag methods:
 
+	h1( id("foo"), cls("bar", "zip") )
+	
+You will find these shorthand attributes for the more common types but any attribute can be declared using the `attr("name", "value")` expression:
+
+	a( href("#foo"), target("_blank"), attr("onclick", "doSomething();") );
 
 ### Conditionals
 You can conditionally output data using a `when()` expression:
