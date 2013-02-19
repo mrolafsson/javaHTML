@@ -15,8 +15,8 @@ public class CodeTest extends AbstractHtmlCapabilityTest {
     public void testCodeWrapper() throws Exception {
         final String[] message = {"foo"};
 
-        ContainerTag div = div().body(
-                span().body(
+        ContainerTag div = div().with(
+                span().with(
                         text(message[0])
                 ),
 
@@ -27,7 +27,7 @@ public class CodeTest extends AbstractHtmlCapabilityTest {
                     }
                 }),
 
-                span().body(
+                span().with(
                         text(message[0])
                 )
         );
@@ -36,8 +36,8 @@ public class CodeTest extends AbstractHtmlCapabilityTest {
 
     @Test
     public void testCodeWrapperWithHTML() throws Exception {
-        ContainerTag div = div().body(
-                span().body(
+        ContainerTag div = div().with(
+                span().with(
                         text("foo")
                 ),
                 exec(new Code() {
@@ -46,7 +46,7 @@ public class CodeTest extends AbstractHtmlCapabilityTest {
                         text("&nbsp;");
                     }
                 }),
-                span().body(
+                span().with(
                         text("bar")
                 )
         );

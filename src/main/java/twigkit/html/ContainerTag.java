@@ -29,12 +29,12 @@ public class ContainerTag extends Tag {
         this.context = context;
     }
 
-    public ContainerTag body(Content... html) throws IOException {
+    public ContainerTag with(Content... html) throws IOException {
         close();
         return this;
     }
 
-    public ContainerTag body(String... text) throws IOException {
+    public ContainerTag with(String... text) throws IOException {
         append(text);
         close();
         return this;

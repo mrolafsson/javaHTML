@@ -11,14 +11,14 @@ public class ConditionalWrapperTest extends AbstractHtmlCapabilityTest {
 
     @Test
     public void testTrue() throws Exception {
-        ContainerTag div = div().body(
+        ContainerTag div = div().with(
 
                 when(true).use(
-                        span().body(
+                        span().with(
                                 text("Hello"),
                                 text(" world!")
                         ),
-                        span().body(
+                        span().with(
                                 text("Go go go!")
                         )
                 ).otherwise(
@@ -31,7 +31,7 @@ public class ConditionalWrapperTest extends AbstractHtmlCapabilityTest {
 
     @Test
     public void testFalse() throws Exception {
-        ContainerTag div = div().body(
+        ContainerTag div = div().with(
 
                 when(false).use(
                         text("Hello World!")
@@ -49,17 +49,17 @@ public class ConditionalWrapperTest extends AbstractHtmlCapabilityTest {
 
     @Test
     public void testNoOtherwise() throws Exception {
-        ContainerTag div = div().body(
+        ContainerTag div = div().with(
                 when(false).use(
-                        span().body(
+                        span().with(
                                 text("Hello"),
                                 text(" world!")
                         ),
-                        span().body(
+                        span().with(
                                 text("Go go go!")
                         )
                 ),
-                span().body(text("no others"))
+                span().with(text("no others"))
         );
         assertEquals("<div><span>no others</span></div>", div);
     }

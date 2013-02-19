@@ -5,16 +5,13 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import twigkit.html.helper.HtmlHttpServlet;
-import twigkit.html.helper.HtmlSimpleTagSupport;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.jsp.JspException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
-import java.io.Writer;
 
 import static junit.framework.Assert.assertEquals;
 import static org.easymock.EasyMock.createMock;
@@ -62,9 +59,9 @@ public class ServletTest {
 
         @Override
         protected void doGetHtml(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-            ol().body(
-                    li().body("Groucho"),
-                    li().body("Zeppo")
+            ol().with(
+                    li().with("Groucho"),
+                    li().with("Zeppo")
             ).validate();
         }
 

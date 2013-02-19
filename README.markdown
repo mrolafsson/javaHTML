@@ -3,12 +3,12 @@ javaHTML is a Java library for efficiently writing valid HTML using a fluid api.
 
 ### Example
 
-	html().body(
-	        head().body(
+	html().with(
+	        head().with(
 	                meta(attr("charset", "UTF-8"))
 	        ),
-	        body().body(
-	                h1().body("Hello world!")
+	        body().with(
+	                h1().with("Hello world!")
 	        )
 	).validate();
 	
@@ -30,9 +30,9 @@ Extend `HtmlHttpServlet` rather than `HttpServlet` and implement the `doGetHtml(
 	public class MarxServlet extends HtmlHttpServlet {
 	    @Override
 	    protected void doGetHtml(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	        ol().body(
-	                li().body("Groucho"),
-	                li().body("Zeppo")
+	        ol().with(
+	                li().with("Groucho"),
+	                li().with("Zeppo")
 	        ).validate();
 	    }
 	}
@@ -44,9 +44,9 @@ If you're using `SimpleTagSupport` then extend `HtmlSimpleTagSupport` and implem
 
 	    @Override
 	    public void doTagHtml() throws JspException, IOException {
-	        ol().body(
-	                li().body("Groucho"),
-	                li().body("Zeppo")
+	        ol().with(
+	                li().with("Groucho"),
+	                li().with("Zeppo")
 	        ).validate();
 	    }
 	}
@@ -57,13 +57,19 @@ Use the `Create` class and either use the default `toString()` method or pass in
 	new Create() {
     	@Override
 	    public void markup() throws IOException {
-        	div().body("Hello world!");
+        	div().with("Hello world!");
     	}
 	}.toString();
 	
 ## Generating HTML
 
 ### Tags
+
+##### Validate
+It's good policy to call `validate()` at the end of the HTML generation to make sure all tags were properly closed.
+
+#### Container Tags
+If they do not contain elements in the body (added using `with()` method) you must call `close()` at the end.
 
 ### Iteration
 

@@ -52,7 +52,7 @@ public class HtmlCapabilityTest extends AbstractHtmlCapabilityTest {
 
     @Test
     public void testA() throws Exception {
-        assertEquals("<a href=\"http://\" target=\"_blank\" title=\"tooltip\">Hello</a>", a(href("http://"), target("_blank"), title("tooltip")).body(text("Hello")));
+        assertEquals("<a href=\"http://\" target=\"_blank\" title=\"tooltip\">Hello</a>", a(href("http://"), target("_blank"), title("tooltip")).with(text("Hello")));
     }
 
     @Test
@@ -63,7 +63,7 @@ public class HtmlCapabilityTest extends AbstractHtmlCapabilityTest {
 
     @Test
     public void testWithBody() throws Exception {
-        ContainerTag div = div().body(div().close(), div().close());
+        ContainerTag div = div().with(div().close(), div().close());
         assertEquals("<div><div></div><div></div></div>", div);
     }
 
@@ -81,7 +81,7 @@ public class HtmlCapabilityTest extends AbstractHtmlCapabilityTest {
 
     @Test
     public void testBodyWithoutText() throws Exception {
-        ContainerTag div = div().body("Hello", " ", "world!");
+        ContainerTag div = div().with("Hello", " ", "world!");
         assertEquals("<div>Hello world!</div>", div);
     }
 

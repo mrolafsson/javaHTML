@@ -17,12 +17,12 @@ public class CreateTest {
         assertEquals("<html><head><meta charset=\"UTF-8\" /></head><body><h1>Hello world!</h1></body></html>", new Create() {
             @Override
             public void markup() throws IOException {
-                html().body(
-                        head().body(
+                html().with(
+                        head().with(
                                 meta(attr("charset", "UTF-8"))
                         ),
-                        body().body(
-                                h1().body("Hello world!")
+                        body().with(
+                                h1().with("Hello world!")
                         )
                 ).validate();
             }
@@ -35,7 +35,7 @@ public class CreateTest {
         new Create(writer) {
             @Override
             public void markup() throws IOException {
-                div().body("Hello world!");
+                div().with("Hello world!");
             }
         };
 
