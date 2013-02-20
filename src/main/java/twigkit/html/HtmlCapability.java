@@ -282,6 +282,13 @@ public class HtmlCapability {
 
     // Attributes
 
+    /**
+     * Only add the attribute if the test evaluates to true.
+     *
+     * @param test
+     * @param attr
+     * @return
+     */
     public Attribute when(boolean test, Attribute attr) {
         if (test) {
             return attr;

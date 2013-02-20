@@ -1,5 +1,7 @@
 # javaHTML
-javaHTML is a Java library for efficiently writing valid HTML using a fluid api. It's more readable and less error prone than string concatenation (or manually writing to stream).
+javaHTML is a Java library for efficiently writing valid HTML using a fluid API. It's more readable and less error prone than string concatenation (or manually writing to stream).
+
+>Supports **inline iteration**, **code execution**, [**conditional expressions**](#Conditionals) etc.
 
 ### Example
 
@@ -77,16 +79,17 @@ Important: If no elements are added to the body of the tag(added using `with()` 
 	ol( cls("empty-list") ).close();
 
 ##### Validate
-It's good policy to call `validate()` at the end of the HTML generation to make sure all tags were properly closed.
+It's good policy to call `validate()` at the end of the HTML generation to make sure all tags were properly closed. Failure to close elements or otherwise invalid markup will be logged out at a `warn` level.
 
 	ol().with(
 		li().with("Groucho"),
 		li().with("Zeppo")
 	).validate();
-	
-Failure to close elements or otherwise invalid markup will be logged out at a `warn` level.
 
-#### Missing or Custom Tags?
+##### Available Tags
+`a(Attribute... attr)`, `body(Attribute... attr)`, `checkbox(Attribute... attr)`, `custom(String name, Attribute... attr)`, `dd(Attribute... attr)`, `div(Attribute... attr)`, `dl(Attribute... attr)`, `dt(Attribute... attr)`, `em(Attribute... attr)`, `fieldset(Attribute... attr)`, `form(Attribute... attr)`, `head(Attribute... attr)`, `html(Attribute... attr)`, `img(Attribute... attr)`, `input(Attribute... attr)`, `legend(Attribute... attr)`, `li(Attribute... attr)`, `meta(Attribute... attr)`, `ol(Attribute... attr)`, `p(Attribute... attr)`, `script(Attribute... attr)`, `span(Attribute... attr)`, `text(Object text)`, `ul(Attribute... attr)`
+
+##### Missing or Custom Tags?
 You can add any tag or element using the `custom()` method:
 
 	custom("blink").with("Las Vegas Baby!");
@@ -107,6 +110,14 @@ Would generate:
 You can add attributes to the HTML tags by declaring them as formal parameters to the tag methods:
 
 	h1( id("foo"), cls("bar", "zip") )
+	
+##### Conditional Attributes
+You can add an attribute to an element if a test expression evaluates to true:
+
+	h1( id("foo"), when(hide, style("display: none;") );
+	
+##### Available Attributes
+`cls(String... values)`, `data(String name, String value)`, `height(int value)`, `href(String value)`, `id(String id)`, `src(String value)`, `style(String value)`, `target(String value)`, `title(String value)`, `width(int value)`
 	
 You will find these shorthand attributes for the more common types but any attribute can be declared using the `attr("name", "value")` expression:
 
