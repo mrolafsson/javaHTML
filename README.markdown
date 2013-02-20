@@ -1,7 +1,7 @@
 # javaHTML
 javaHTML is a Java library for efficiently writing valid HTML using a fluid API. It's more readable and less error prone than string concatenation (or manually writing to stream).
 
->Supports **inline iteration**, **code execution**, [**conditional expressions**](#Conditionals) etc.
+>Supports **inline iteration**, **code execution**, [**conditional expressions**](#conditionals) etc.
 
 ### Example
 
