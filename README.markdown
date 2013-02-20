@@ -141,9 +141,8 @@ If you use the `exec()` method in a `when()` conditional block it will only exec
 You can encapsulate more complex patterns or markup as reusable components. The recommended pattern would be to implement a `Component` class, and pass any required data in via the constructor.
 
     public class Greeting extends Component {
-    
         private String name;
-    
+            
         public Greeting(String name) {
             this.name = name;
         }
