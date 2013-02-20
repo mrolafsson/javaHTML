@@ -344,4 +344,9 @@ public class HtmlCapability {
         iterate.run();
         return new Content(writer);
     }
+
+    public Content component(Component component) throws IOException {
+        component.render(this);
+        return new Content(getWriter());
+    }
 }

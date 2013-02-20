@@ -42,6 +42,7 @@ public abstract class HtmlSimpleTagSupport extends SimpleTagSupport {
     /**
      * Delegate methods
      */
+
     public Attribute.Title title(String value) {
         return htmlCapability.title(value);
     }

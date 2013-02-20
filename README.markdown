@@ -1,7 +1,7 @@
 # javaHTML
 javaHTML is a Java library for efficiently writing valid HTML using a fluid API. It's more readable and less error prone than string concatenation (or manually writing to stream).
 
->Supports fully inline [**iteration**](#iteration), [**code execution**](#custom-code), [**conditional expressions**](#conditionals) etc.
+> Supports fully inline [**iteration**](#iteration), [**code execution**](#custom-code), [**conditional expressions**](#conditionals), and reusable [**components**](#components).
 
 ### Example
 
@@ -137,6 +137,30 @@ You can execute any code inline using the `exec()` method and passing it an inst
 	
 If you use the `exec()` method in a `when()` conditional block it will only execute if the condition was met.
 
+# Components
+You can encapsulate more complex patterns or markup as reusable components. The recommended pattern would be to implement a `Component` class, and pass any required data in via the constructor.
+
+    public class Greeting extends Component {
+    
+        private String name;
+    
+        public Greeting(String name) {
+            this.name = name;
+        }
+    
+        @Override
+        public void markup() throws IOException {
+            h1().with("Hello " + name + "!");
+        }
+    }
+
+You can then use your component as if it was any other element by passing it into the `component()` method:
+
+	body().with(
+		component( new Greeting("Groucho") ),
+		h2().with("Take me to your leader!")
+	);
+	
 # Installation
 Add the javaHTML jar to the class path or include using Maven:
 

@@ -1,29 +1,30 @@
-package twigkit.html.helper;
+package twigkit.html;
 
-import twigkit.html.*;
 import twigkit.html.attr.Attribute;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.jsp.JspException;
 import java.io.IOException;
 
 /**
+ * Implement a {@link Component} to encapsulate or reuse more complex patterns.
+ *
  * @author mr.olafsson
  */
-public abstract class HtmlHttpServlet extends HttpServlet {
+public abstract class Component {
 
     private HtmlCapability htmlCapability;
 
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        htmlCapability = new HtmlCapability(resp.getWriter(), HtmlHttpServlet.class);
-        doGetHtml(req, resp);
+    protected void render(HtmlCapability htmlCapability) throws IOException {
+        this.htmlCapability = htmlCapability;
+        markup();
     }
 
-    protected abstract void doGetHtml(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException;
+    /**
+     * Generate markup here with access to any objects passed in via the constructor.
+     *
+     * @throws IOException
+     */
+    public abstract void markup() throws IOException;
 
     /**
      * Delegate methods
