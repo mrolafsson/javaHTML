@@ -9,7 +9,7 @@ import java.io.Writer;
  *
  * @author mr.olafsson
  */
-public abstract class Code extends HtmlCapability {
+public abstract class Code extends HtmlCapabilityImpl {
 
     public void setWriter(Writer writer) {
         super.setWriter(writer);

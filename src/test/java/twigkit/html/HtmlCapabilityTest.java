@@ -3,7 +3,7 @@ package twigkit.html;
 import org.junit.Test;
 
 /**
- * Unit tests for the {@link HtmlCapability} class.
+ * Unit tests for the {@link HtmlCapabilityImpl} class.
  *
  * @author mr.olafsson
  */
@@ -50,6 +50,7 @@ public class HtmlCapabilityTest extends AbstractHtmlCapabilityTest {
         assertEquals("<img id=\"image\" src=\"pic.png\" width=\"100\" height=\"200\" />", img(id("image"), src("pic.png"), width(100), height(200)));
         assertEquals("<input type=\"checkbox\" />", checkbox());
         assertEquals("<meta charset=\"UTF-8\" />", meta(attr("charset", "UTF-8")));
+        assertEquals("<textarea value=\"Foo\" />", textarea("Foo"));
     }
 
     @Test

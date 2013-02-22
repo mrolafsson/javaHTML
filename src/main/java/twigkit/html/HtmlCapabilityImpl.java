@@ -4,264 +4,289 @@ import twigkit.html.attr.Attribute;
 
 import javax.servlet.jsp.JspException;
 import java.io.IOException;
+import java.io.Writer;
 
 /**
- * Implement a {@link Component} to encapsulate or reuse more complex patterns.
+ * Extend or statically import {@link HtmlCapabilityImpl} to use the helper methods that create {@link Content}.
  *
  * @author mr.olafsson
  */
-public abstract class Component implements HtmlCapability {
+public class HtmlCapabilityImpl implements HtmlCapability {
 
-    private HtmlCapability htmlCapability;
+    private Writer writer;
+    private Class context;
 
-    protected void render(HtmlCapability htmlCapability) throws IOException {
-        this.htmlCapability = htmlCapability;
-        markup();
+    public HtmlCapabilityImpl() {
+        this((Class) null);
     }
 
-    /**
-     * Generate markup here with access to any objects passed in via the constructor.
-     *
-     * @throws IOException
-     */
-    public abstract void markup() throws IOException;
+    public HtmlCapabilityImpl(Class context) {
+        this(null, context);
+    }
 
-    /**
-     * Delegate methods
-     */
+    public HtmlCapabilityImpl(Writer writer) {
+        this(writer, HtmlCapabilityImpl.class);
+    }
+
+    public HtmlCapabilityImpl(Writer writer, Class context) {
+        this.writer = writer;
+        this.context = context;
+    }
+
+    public Writer getWriter() {
+        return writer;
+    }
+
+    public void setWriter(Writer writer) {
+        this.writer = writer;
+    }
 
     @Override
     public ContainerTag html(Attribute... attr) throws IOException {
-        return htmlCapability.html(attr);
+        return new ContainerTag(writer, Tag.HTML, context, attr);
     }
 
     @Override
     public ContainerTag body(Attribute... attr) throws IOException {
-        return htmlCapability.body(attr);
+        return new ContainerTag(writer, Tag.BODY, context, attr);
     }
 
     @Override
     public ContainerTag head(Attribute... attr) throws IOException {
-        return htmlCapability.head(attr);
+        return new ContainerTag(writer, Tag.HEAD, context, attr);
     }
 
     @Override
     public Content meta(Attribute... attr) throws IOException {
-        return htmlCapability.meta(attr);
+        return new SelfClosingTag(writer, Tag.META, attr);
     }
 
     @Override
     public ConditionalWrapper when(boolean test) {
-        return htmlCapability.when(test);
+        if (!test) {
+            this.writer = new DummyWriter(this);
+        }
+        return new ConditionalWrapper.Use(this);
     }
 
     @Override
     public Content exec(Code code) throws JspException, IOException {
-        return htmlCapability.exec(code);
+        code.setWriter(writer);
+        if (writer != null && !(writer instanceof DummyWriter)) {
+            code.run();
+        }
+        return new Content(writer);
     }
 
     @Override
     public ContainerTag div(Attribute... attr) throws IOException {
-        return htmlCapability.div(attr);
+        return new ContainerTag(writer, Tag.DIV, context, attr);
     }
 
     @Override
     public ContainerTag span(Attribute... attr) throws IOException {
-        return htmlCapability.span(attr);
+        return new ContainerTag(writer, Tag.SPAN, context, attr);
     }
 
     @Override
     public ContainerTag em(Attribute... attr) throws IOException {
-        return htmlCapability.em(attr);
+        return new ContainerTag(writer, Tag.EM, context, attr);
     }
 
     @Override
     public ContainerTag h1(Attribute... attr) throws IOException {
-        return htmlCapability.h1(attr);
+        return new ContainerTag(writer, Tag.H1, context, attr);
     }
 
     @Override
     public ContainerTag h2(Attribute... attr) throws IOException {
-        return htmlCapability.h2(attr);
+        return new ContainerTag(writer, Tag.H2, context, attr);
     }
 
     @Override
     public ContainerTag h3(Attribute... attr) throws IOException {
-        return htmlCapability.h3(attr);
+        return new ContainerTag(writer, Tag.H3, context, attr);
     }
 
     @Override
     public ContainerTag h4(Attribute... attr) throws IOException {
-        return htmlCapability.h4(attr);
+        return new ContainerTag(writer, Tag.H4, context, attr);
     }
 
     @Override
     public ContainerTag h5(Attribute... attr) throws IOException {
-        return htmlCapability.h5(attr);
+        return new ContainerTag(writer, Tag.H5, context, attr);
     }
 
     @Override
     public ContainerTag h6(Attribute... attr) throws IOException {
-        return htmlCapability.h6(attr);
+        return new ContainerTag(writer, Tag.H6, context, attr);
     }
 
     @Override
     public ContainerTag p(Attribute... attr) throws IOException {
-        return htmlCapability.p(attr);
+        return new ContainerTag(writer, Tag.P, context, attr);
     }
 
     @Override
     public ContainerTag ul(Attribute... attr) throws IOException {
-        return htmlCapability.ul(attr);
+        return new ContainerTag(writer, Tag.UL, context, attr);
     }
 
     @Override
     public ContainerTag ol(Attribute... attr) throws IOException {
-        return htmlCapability.ol(attr);
+        return new ContainerTag(writer, Tag.OL, context, attr);
     }
 
     @Override
     public ContainerTag li(Attribute... attr) throws IOException {
-        return htmlCapability.li(attr);
+        return new ContainerTag(writer, Tag.LI, context, attr);
     }
 
     @Override
     public ContainerTag dl(Attribute... attr) throws IOException {
-        return htmlCapability.dl(attr);
+        return new ContainerTag(writer, Tag.DL, context, attr);
     }
 
     @Override
     public ContainerTag dt(Attribute... attr) throws IOException {
-        return htmlCapability.dt(attr);
+        return new ContainerTag(writer, Tag.DT, context, attr);
     }
 
     @Override
     public ContainerTag dd(Attribute... attr) throws IOException {
-        return htmlCapability.dd(attr);
+        return new ContainerTag(writer, Tag.DD, context, attr);
     }
 
     @Override
     public ContainerTag a(Attribute... attr) throws IOException {
-        return htmlCapability.a(attr);
+        return new ContainerTag(writer, Tag.A, context, attr);
     }
 
     @Override
     public SelfClosingTag img(Attribute... attr) throws IOException {
-        return htmlCapability.img(attr);
+        return new SelfClosingTag(writer, Tag.IMG, attr);
     }
 
     @Override
     public ContainerTag form(Attribute... attr) throws IOException {
-        return htmlCapability.form(attr);
+        return new ContainerTag(writer, Tag.FORM, context, attr);
     }
 
     @Override
     public ContainerTag input(Attribute... attr) throws IOException {
-        return htmlCapability.input(attr);
+        return new ContainerTag(writer, Tag.INPUT, context, attr);
     }
 
     @Override
     public SelfClosingTag textarea(String value, Attribute... attr) throws IOException {
-        return htmlCapability.textarea(value, attr);
+        return new SelfClosingTag(writer, Tag.TEXTAREA, attr("value", value), attr);
     }
 
     @Override
     public SelfClosingTag checkbox(Attribute... attr) throws IOException {
-        return htmlCapability.checkbox(attr);
+        return new SelfClosingTag(writer, Tag.INPUT, attr("type", "checkbox"), attr);
     }
 
     @Override
     public ContainerTag fieldset(Attribute... attr) throws IOException {
-        return htmlCapability.fieldset(attr);
+        return new ContainerTag(writer, Tag.FIELDSET, context, attr);
     }
 
     @Override
     public ContainerTag legend(Attribute... attr) throws IOException {
-        return htmlCapability.legend(attr);
+        return new ContainerTag(writer, Tag.LEGEND, context, attr);
     }
 
     @Override
     public ContainerTag script(Attribute... attr) throws IOException {
-        return htmlCapability.script(attr);
+        return new ContainerTag(writer, Tag.SCRIPT, context, attr);
     }
 
     @Override
     public ContainerTag custom(String name, Attribute... attr) throws IOException {
-        return htmlCapability.custom(name, attr);
+        return new ContainerTag(writer, name, context, attr);
     }
 
     @Override
     public Text text(Object text) throws IOException {
-        return htmlCapability.text(text);
+        return new Text(writer, text);
     }
+
+    // Attributes
 
     @Override
     public Attribute when(boolean test, Attribute attr) {
-        return htmlCapability.when(test, attr);
+        if (test) {
+            return attr;
+        }
+        return null;
     }
 
     @Override
     public Attribute attr(String name, String... values) {
-        return htmlCapability.attr(name, values);
+        return new Attribute(name, values);
     }
 
     @Override
     public Attribute.Class cls(String... values) {
-        return htmlCapability.cls(values);
+        return new Attribute.Class(values);
     }
 
     @Override
     public Attribute.Id id(String id) {
-        return htmlCapability.id(id);
+        return new Attribute.Id(id);
     }
 
     @Override
     public Attribute.Data data(String name, String value) {
-        return htmlCapability.data(name, value);
+        return new Attribute.Data(name, value);
     }
 
     @Override
     public Attribute.Href href(String value) {
-        return htmlCapability.href(value);
+        return new Attribute.Href(value);
     }
 
     @Override
     public Attribute.Src src(String value) {
-        return htmlCapability.src(value);
+        return new Attribute.Src(value);
     }
 
     @Override
     public Attribute.Target target(String value) {
-        return htmlCapability.target(value);
+        return new Attribute.Target(value);
     }
 
     @Override
     public Attribute.Title title(String value) {
-        return htmlCapability.title(value);
+        return new Attribute.Title(value);
     }
 
     @Override
     public Attribute.Style style(String value) {
-        return htmlCapability.style(value);
+        return new Attribute.Style(value);
     }
 
     @Override
     public Attribute.Height height(int value) {
-        return htmlCapability.height(value);
+        return new Attribute.Height(value);
     }
 
     @Override
     public Attribute.Width width(int value) {
-        return htmlCapability.width(value);
+        return new Attribute.Width(value);
     }
 
     @Override
     public Content iterate(Loop iterate) {
-        return htmlCapability.iterate(iterate);
+        iterate.run();
+        return new Content(writer);
     }
 
     @Override
     public Content component(Component component) throws IOException {
-        return htmlCapability.component(component);
+        component.render(this);
+        return new Content(getWriter());
     }
 }

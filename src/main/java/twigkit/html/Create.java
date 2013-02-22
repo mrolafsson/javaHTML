@@ -10,7 +10,7 @@ import java.io.Writer;
  *
  * @author mr.olafsson
  */
-public abstract class Create extends HtmlCapability {
+public abstract class Create extends HtmlCapabilityImpl {
 
     private Writer writer;
 
@@ -30,7 +30,7 @@ public abstract class Create extends HtmlCapability {
     }
 
     /**
-     * Implement to get access to {@link HtmlCapability} methods. Output will be written to the {@link Writer} implementation
+     * Implement to get access to {@link HtmlCapabilityImpl} methods. Output will be written to the {@link Writer} implementation
      * provided in the constructor of the {@link Create} class, or alternatively using a simple {@link StringWriter} used
      * for the {@link #toString()} fallback.
      *

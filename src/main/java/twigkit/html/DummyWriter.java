@@ -13,7 +13,7 @@ public class DummyWriter extends Writer {
 
     private Writer real;
 
-    protected DummyWriter(HtmlCapability real) {
+    protected DummyWriter(HtmlCapabilityImpl real) {
         this.real = real.getWriter();
     }
 

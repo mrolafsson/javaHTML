@@ -41,7 +41,7 @@ It's good policy to call `validate()` at the end of the HTML generation to make 
 	).validate();
 
 #### Available Tags
-`a(Attribute... attr)`, `body(Attribute... attr)`, `checkbox(Attribute... attr)`, `custom(String name, Attribute... attr)`, `dd(Attribute... attr)`, `div(Attribute... attr)`, `dl(Attribute... attr)`, `dt(Attribute... attr)`, `em(Attribute... attr)`, `fieldset(Attribute... attr)`, `form(Attribute... attr)`, `head(Attribute... attr)`, `html(Attribute... attr)`, `img(Attribute... attr)`, `input(Attribute... attr)`, `legend(Attribute... attr)`, `li(Attribute... attr)`, `meta(Attribute... attr)`, `ol(Attribute... attr)`, `p(Attribute... attr)`, `script(Attribute... attr)`, `span(Attribute... attr)`, `text(Object text)`, `ul(Attribute... attr)`
+`a(Attribute... attr)`, `body(Attribute... attr)`, `checkbox(Attribute... attr)`, `custom(String name, Attribute... attr)`, `dd(Attribute... attr)`, `div(Attribute... attr)`, `dl(Attribute... attr)`, `dt(Attribute... attr)`, `em(Attribute... attr)`, `fieldset(Attribute... attr)`, `form(Attribute... attr)`, `head(Attribute... attr)`, `html(Attribute... attr)`, `img(Attribute... attr)`, `input(Attribute... attr)`, `legend(Attribute... attr)`, `li(Attribute... attr)`, `meta(Attribute... attr)`, `ol(Attribute... attr)`, `p(Attribute... attr)`, `script(Attribute... attr)`, `span(Attribute... attr)`, `text(Object text)`, `textarea(String value, Attribute... attr)`, `ul(Attribute... attr)`
 
 #### Missing or Custom Tags?
 You can add any tag or element using the `custom()` method:
@@ -170,7 +170,7 @@ Add the javaHTML jar to the class path or include using Maven:
 	</dependency>
 
 ## Integration
-Simple really, you build your HTML by using one of the helper classes for servlets, custom tags, extend `HtmlCapability` or use the `Create` class.
+Simple really, you build your HTML by using one of the helper classes for servlets, custom tags, extend `HtmlCapabilityImpl` or use the `Create` class.
 	
 ### Servlets
 Extend `HtmlHttpServlet` rather than `HttpServlet` and implement the `doGetHtml()` method:

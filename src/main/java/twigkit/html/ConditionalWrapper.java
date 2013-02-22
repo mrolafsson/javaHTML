@@ -1,23 +1,21 @@
 package twigkit.html;
 
-import java.io.Writer;
-
 /**
  * Use it to conditionally add {@link Content} inline based on a boolean test using {@link Use} and {@link Otherwise}
  * wrappers.
  *
  * Important: Irrespective of which conditional wrapper is executed, all code in the body WILL STILL BE EXECUTED the only
  * difference is that {@link Content} tags will not write anything to the stream because they will be passed
- * a {@link DummyWriter}. As a workaround, if you use the {@link HtmlCapability#exec(Code)} method and pass it a {@link Code} instance then
+ * a {@link DummyWriter}. As a workaround, if you use the {@link HtmlCapabilityImpl#exec(Code)} method and pass it a {@link Code} instance then
  * that code will only be run if the condition is met.
  *
  * @author mr.olafsson
  */
 public abstract class ConditionalWrapper extends Content {
 
-    private HtmlCapability htmlCapability;
+    private HtmlCapabilityImpl htmlCapability;
 
-    public ConditionalWrapper(HtmlCapability htmlCapability) {
+    public ConditionalWrapper(HtmlCapabilityImpl htmlCapability) {
         super(htmlCapability.getWriter());
         this.htmlCapability = htmlCapability;
     }
@@ -30,12 +28,12 @@ public abstract class ConditionalWrapper extends Content {
         return this;
     }
 
-    protected HtmlCapability getHtmlCapability() {
+    protected HtmlCapabilityImpl getHtmlCapability() {
         return htmlCapability;
     }
 
     public static class Use extends ConditionalWrapper {
-        public Use(HtmlCapability htmlCapability) {
+        public Use(HtmlCapabilityImpl htmlCapability) {
             super(htmlCapability);
         }
 
@@ -50,7 +48,7 @@ public abstract class ConditionalWrapper extends Content {
     }
 
     public static class Otherwise extends ConditionalWrapper {
-        public Otherwise(HtmlCapability htmlCapability) {
+        public Otherwise(HtmlCapabilityImpl htmlCapability) {
             super(htmlCapability);
         }
 

@@ -3,11 +3,11 @@ package twigkit.html;
 import java.io.StringWriter;
 
 /**
- * Abstract class to make it easier to test {@link HtmlCapability}.
+ * Abstract class to make it easier to test {@link HtmlCapabilityImpl}.
  *
  * @author mr.olafsson
  */
-public class AbstractHtmlCapabilityTest extends HtmlCapability {
+public class AbstractHtmlCapabilityTest extends HtmlCapabilityImpl {
 
     public AbstractHtmlCapabilityTest() {
         super(new StringWriter(), AbstractHtmlCapabilityTest.class);
