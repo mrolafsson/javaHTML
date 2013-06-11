@@ -110,6 +110,15 @@ public class AttributeTest {
     }
 
     @Test
+    public void testMultipleClassAttributes() throws Exception {
+        Attribute attr1 = new Attribute.Class().add("one");
+        Attribute attr2 = new Attribute.Class().add("two");
+        StringWriter writer = new StringWriter();
+        Attribute.write(writer, attr1, attr2);
+        assertEquals(" class=\"one two\"", writer.toString());
+    }
+
+    @Test
     public void testWidthAndHeight() throws Exception {
         Attribute attr = new Attribute.Height(-1);
         assertEquals("", attr.toString());

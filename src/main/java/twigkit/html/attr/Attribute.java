@@ -27,7 +27,6 @@ import java.io.IOException;
 import java.io.StringWriter;
 import java.io.Writer;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
@@ -86,6 +85,16 @@ public class Attribute {
     public static void write(Writer writer, Attribute... attributes) throws IOException {
         for (int i = 0; i < attributes.length; i++) {
             if (attributes[i] != null && attributes[i].values != null && attributes[i].values.size() > 0) {
+                // Aggregating attribute values for other attributes with the same name
+                for (int o = i + 1; o < attributes.length; o++) {
+                    // Checking subsequent attributes to see if they're the same as this one
+                    if (attributes[o] != null && attributes[o].name.equals(attributes[i].name)) {
+                        // Adding all the values from the subsequent attribute to this one
+                        attributes[i].values.addAll(attributes[o].values);
+                        // Clearing the values of the subsequent one
+                        attributes[o] = null;
+                    }
+                }
                 writer.write(SPACE);
                 attributes[i].write(writer);
             }
