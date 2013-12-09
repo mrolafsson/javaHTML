@@ -1,9 +1,7 @@
 package twigkit.html;
 
-import atunit.*;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import twigkit.html.helper.HtmlHttpServlet;
 
 import javax.servlet.ServletException;
@@ -14,24 +12,17 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 
 import static junit.framework.Assert.assertEquals;
-import static org.easymock.EasyMock.createMock;
-import static org.easymock.EasyMock.expect;
-import static org.easymock.EasyMock.replay;
+import static org.easymock.EasyMock.*;
 
 /**
  * @author mr.olafsson
  */
-@RunWith(AtUnit.class)
-@MockFramework(MockFramework.Option.EASYMOCK)
 public class ServletTest {
 
-    @Unit
     private FooServlet servlet;
 
-    @Mock
     private HttpServletRequest request;
 
-    @Mock
     private HttpServletResponse response;
 
     @Before

@@ -44,24 +44,6 @@
         <url>https://github.com/mrolafsson/javaHTML/issues</url>
     </issueManagement>
 
-    <repositories>
-        <repository>
-            <id>repo.twigkit.com</id>
-            <name>TwigKit</name>
-            <url>http://twigkit.artifactoryonline.com/twigkit/repo/</url>
-            <releases>
-                <enabled>true</enabled>
-                <updatePolicy>never</updatePolicy>
-                <checksumPolicy>warn</checksumPolicy>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-                <updatePolicy>always</updatePolicy>
-                <checksumPolicy>warn</checksumPolicy>
-            </snapshots>
-        </repository>
-    </repositories>
-
     <distributionManagement>
         <repository>
             <id>repo.twigkit.com-releases</id>
@@ -105,12 +87,6 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.8.2</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>atunit</groupId>
-            <artifactId>atunit</artifactId>
-            <version>1.0.1</version>
             <scope>test</scope>
         </dependency>
         <dependency>
