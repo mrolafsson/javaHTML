@@ -2,7 +2,6 @@ package twigkit.html;
 
 import twigkit.html.attr.Attribute;
 
-import javax.servlet.jsp.JspException;
 import java.io.IOException;
 
 /**
@@ -56,7 +55,7 @@ public abstract class Component implements HtmlCapability {
     }
 
     @Override
-    public Content exec(Code code) throws JspException, IOException {
+    public Content exec(Code code) throws IOException {
         return htmlCapability.exec(code);
     }
 

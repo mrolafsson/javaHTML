@@ -69,7 +69,7 @@ public abstract class HtmlSimpleTagSupport extends SimpleTagSupport implements H
     }
 
     @Override
-    public Content exec(Code code) throws JspException, IOException {
+    public Content exec(Code code) throws IOException {
         return htmlCapability.exec(code);
     }
 

@@ -2,7 +2,6 @@ package twigkit.html;
 
 import twigkit.html.attr.Attribute;
 
-import javax.servlet.jsp.JspException;
 import java.io.IOException;
 import java.io.Writer;
 
@@ -70,7 +69,7 @@ public class HtmlCapabilityImpl implements HtmlCapability {
     }
 
     @Override
-    public Content exec(Code code) throws JspException, IOException {
+    public Content exec(Code code) throws IOException {
         code.setWriter(writer);
         if (writer != null && !(writer instanceof DummyWriter)) {
             code.run();

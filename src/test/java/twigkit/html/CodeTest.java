@@ -2,7 +2,6 @@ package twigkit.html;
 
 import org.junit.Test;
 
-import javax.servlet.jsp.JspException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -25,7 +24,7 @@ public class CodeTest extends AbstractHtmlCapabilityTest {
                 text("Tom "),
                 exec(new Code() {
                     @Override
-                    public void run() throws JspException, IOException {
+                    public void run() throws IOException {
                         if (random.nextBoolean()) {
                             em().with("hates");
                         } else {

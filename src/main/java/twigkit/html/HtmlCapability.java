@@ -2,7 +2,6 @@ package twigkit.html;
 
 import twigkit.html.attr.Attribute;
 
-import javax.servlet.jsp.JspException;
 import java.io.IOException;
 
 /**
@@ -33,7 +32,7 @@ public interface HtmlCapability {
      * @throws javax.servlet.jsp.JspException
      * @throws java.io.IOException
      */
-    Content exec(Code code) throws JspException, IOException;
+    Content exec(Code code) throws IOException;
 
     /**
      * Create a 'div' element.
