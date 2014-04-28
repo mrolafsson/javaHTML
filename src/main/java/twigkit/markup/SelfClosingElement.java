@@ -8,9 +8,9 @@ import java.io.Writer;
  *
  * @author mr.olafsson
  */
-public class SelfClosingTag extends Tag {
+public class SelfClosingElement extends Tag {
 
-    public SelfClosingTag(Writer writer, String name, Attribute... attributes) throws IOException {
+    public SelfClosingElement(Writer writer, String name, Attribute... attributes) throws IOException {
         this(writer, name, null, attributes);
     }
 
@@ -24,7 +24,7 @@ public class SelfClosingTag extends Tag {
      * @param attributes
      * @throws IOException
      */
-    public SelfClosingTag(Writer writer, String name, Attribute attribute, Attribute... attributes) throws IOException {
+    public SelfClosingElement(Writer writer, String name, Attribute attribute, Attribute... attributes) throws IOException {
         super(writer, name, attributes);
         writer.write(LT);
         writer.write(name);

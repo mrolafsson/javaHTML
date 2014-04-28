@@ -1,7 +1,6 @@
 package twigkit.markup;
 
 import org.junit.Test;
-import twigkit.markup.html.HtmlAttribute;
 
 import java.io.IOException;
 import java.io.Writer;
@@ -15,13 +14,13 @@ public class AttributeTest {
 
     @Test
     public void testAttribute() throws Exception {
-        HtmlAttribute attr = new HtmlAttribute("name", "value1", "value2");
+        Attribute attr = new Attribute("name", "value1", "value2");
         assertEquals("name=\"value1 value2\"", attr.toString());
     }
 
     @Test(expected = IOException.class)
     public void testNullWriter() throws Exception {
-        HtmlAttribute attr = new HtmlAttribute("name", "value1", "value2");
+        Attribute attr = new Attribute("name", "value1", "value2");
         attr.write(new Writer() {
             @Override
             public void write(char[] chars, int i, int i1) throws IOException {

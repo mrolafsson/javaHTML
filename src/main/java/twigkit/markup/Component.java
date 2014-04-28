@@ -30,15 +30,15 @@ public abstract class Component {
      * Delegate methods
      */
 
-    protected ContainerTag html(HtmlAttribute... attr) throws IOException {
+    protected ContainerElement html(HtmlAttribute... attr) throws IOException {
         return htmlCapability.html(attr);
     }
 
-    protected ContainerTag body(HtmlAttribute... attr) throws IOException {
+    protected ContainerElement body(HtmlAttribute... attr) throws IOException {
         return htmlCapability.body(attr);
     }
 
-    protected ContainerTag head(HtmlAttribute... attr) throws IOException {
+    protected ContainerElement head(HtmlAttribute... attr) throws IOException {
         return htmlCapability.head(attr);
     }
 
@@ -54,107 +54,107 @@ public abstract class Component {
         return htmlCapability.exec(code);
     }
 
-    protected ContainerTag div(HtmlAttribute... attr) throws IOException {
+    protected ContainerElement div(HtmlAttribute... attr) throws IOException {
         return htmlCapability.div(attr);
     }
 
-    protected ContainerTag span(HtmlAttribute... attr) throws IOException {
+    protected ContainerElement span(HtmlAttribute... attr) throws IOException {
         return htmlCapability.span(attr);
     }
 
-    protected ContainerTag em(HtmlAttribute... attr) throws IOException {
+    protected ContainerElement em(HtmlAttribute... attr) throws IOException {
         return htmlCapability.em(attr);
     }
 
-    protected ContainerTag h1(HtmlAttribute... attr) throws IOException {
+    protected ContainerElement h1(HtmlAttribute... attr) throws IOException {
         return htmlCapability.h1(attr);
     }
 
-    protected ContainerTag h2(HtmlAttribute... attr) throws IOException {
+    protected ContainerElement h2(HtmlAttribute... attr) throws IOException {
         return htmlCapability.h2(attr);
     }
 
-    protected ContainerTag h3(HtmlAttribute... attr) throws IOException {
+    protected ContainerElement h3(HtmlAttribute... attr) throws IOException {
         return htmlCapability.h3(attr);
     }
 
-    protected ContainerTag h4(HtmlAttribute... attr) throws IOException {
+    protected ContainerElement h4(HtmlAttribute... attr) throws IOException {
         return htmlCapability.h4(attr);
     }
 
-    protected ContainerTag h5(HtmlAttribute... attr) throws IOException {
+    protected ContainerElement h5(HtmlAttribute... attr) throws IOException {
         return htmlCapability.h5(attr);
     }
 
-    protected ContainerTag h6(HtmlAttribute... attr) throws IOException {
+    protected ContainerElement h6(HtmlAttribute... attr) throws IOException {
         return htmlCapability.h6(attr);
     }
 
-    protected ContainerTag p(HtmlAttribute... attr) throws IOException {
+    protected ContainerElement p(HtmlAttribute... attr) throws IOException {
         return htmlCapability.p(attr);
     }
 
-    protected ContainerTag ul(HtmlAttribute... attr) throws IOException {
+    protected ContainerElement ul(HtmlAttribute... attr) throws IOException {
         return htmlCapability.ul(attr);
     }
 
-    protected ContainerTag ol(HtmlAttribute... attr) throws IOException {
+    protected ContainerElement ol(HtmlAttribute... attr) throws IOException {
         return htmlCapability.ol(attr);
     }
 
-    protected ContainerTag li(HtmlAttribute... attr) throws IOException {
+    protected ContainerElement li(HtmlAttribute... attr) throws IOException {
         return htmlCapability.li(attr);
     }
 
-    protected ContainerTag dl(HtmlAttribute... attr) throws IOException {
+    protected ContainerElement dl(HtmlAttribute... attr) throws IOException {
         return htmlCapability.dl(attr);
     }
 
-    protected ContainerTag dt(HtmlAttribute... attr) throws IOException {
+    protected ContainerElement dt(HtmlAttribute... attr) throws IOException {
         return htmlCapability.dt(attr);
     }
 
-    protected ContainerTag dd(HtmlAttribute... attr) throws IOException {
+    protected ContainerElement dd(HtmlAttribute... attr) throws IOException {
         return htmlCapability.dd(attr);
     }
 
-    protected ContainerTag a(HtmlAttribute... attr) throws IOException {
+    protected ContainerElement a(HtmlAttribute... attr) throws IOException {
         return htmlCapability.a(attr);
     }
 
-    protected SelfClosingTag img(HtmlAttribute... attr) throws IOException {
+    protected SelfClosingElement img(HtmlAttribute... attr) throws IOException {
         return htmlCapability.img(attr);
     }
 
-    protected ContainerTag form(HtmlAttribute... attr) throws IOException {
+    protected ContainerElement form(HtmlAttribute... attr) throws IOException {
         return htmlCapability.form(attr);
     }
 
-    protected ContainerTag input(HtmlAttribute... attr) throws IOException {
+    protected ContainerElement input(HtmlAttribute... attr) throws IOException {
         return htmlCapability.input(attr);
     }
 
-    protected SelfClosingTag textarea(String value, HtmlAttribute... attr) throws IOException {
+    protected SelfClosingElement textarea(String value, HtmlAttribute... attr) throws IOException {
         return htmlCapability.textarea(value, attr);
     }
 
-    protected SelfClosingTag checkbox(HtmlAttribute... attr) throws IOException {
+    protected SelfClosingElement checkbox(HtmlAttribute... attr) throws IOException {
         return htmlCapability.checkbox(attr);
     }
 
-    protected ContainerTag fieldset(HtmlAttribute... attr) throws IOException {
+    protected ContainerElement fieldset(HtmlAttribute... attr) throws IOException {
         return htmlCapability.fieldset(attr);
     }
 
-    protected ContainerTag legend(HtmlAttribute... attr) throws IOException {
+    protected ContainerElement legend(HtmlAttribute... attr) throws IOException {
         return htmlCapability.legend(attr);
     }
 
-    protected ContainerTag script(HtmlAttribute... attr) throws IOException {
+    protected ContainerElement script(HtmlAttribute... attr) throws IOException {
         return htmlCapability.script(attr);
     }
 
-    protected ContainerTag el(String name, HtmlAttribute... attr) throws IOException {
+    protected ContainerElement el(String name, HtmlAttribute... attr) throws IOException {
         return htmlCapability.el(name, attr);
     }
 

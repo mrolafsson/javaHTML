@@ -1,7 +1,7 @@
 package twigkit.markup.html;
 
 import org.junit.Test;
-import twigkit.markup.ContainerTag;
+import twigkit.markup.ContainerElement;
 import twigkit.markup.Content;
 
 import java.io.IOException;
@@ -42,7 +42,7 @@ public class CodeTest extends AbstractHtmlCapabilityTest {
     public void testCodeWrapper() throws Exception {
         final String[] message = {"foo"};
 
-        ContainerTag div = div().with(
+        ContainerElement div = div().with(
                 span().with(
                         text(message[0])
                 ),
@@ -63,7 +63,7 @@ public class CodeTest extends AbstractHtmlCapabilityTest {
 
     @Test
     public void testCodeWrapperWithHTML() throws Exception {
-        ContainerTag div = div().with(
+        ContainerElement div = div().with(
                 span().with(
                         text("foo")
                 ),

@@ -1,7 +1,7 @@
 package twigkit.markup.html;
 
 import org.junit.Test;
-import twigkit.markup.ContainerTag;
+import twigkit.markup.ContainerElement;
 
 /**
  * Unit tests for the {@link HtmlCapabilityImpl} class.
@@ -61,19 +61,19 @@ public class HtmlCapabilityTest extends AbstractHtmlCapabilityTest {
 
     @Test
     public void testEmptyDivWithAttributes() throws Exception {
-        ContainerTag div = div(style("display: none;"), cls("class1", "class2"), id("something"), data("base", "sql"), attr("onclick", "alert('hello');")).close();
+        ContainerElement div = div(style("display: none;"), cls("class1", "class2"), id("something"), data("base", "sql"), attr("onclick", "alert('hello');")).close();
         assertEquals("<div style=\"display: none;\" class=\"class1 class2\" id=\"something\" data-base=\"sql\" onclick=\"alert('hello');\"></div>", div);
     }
 
     @Test
     public void testWithBody() throws Exception {
-        ContainerTag div = div().with(div().close(), div().close());
+        ContainerElement div = div().with(div().close(), div().close());
         assertEquals("<div><div></div><div></div></div>", div);
     }
 
     @Test
     public void testAppend() throws Exception {
-        ContainerTag div = div().append(
+        ContainerElement div = div().append(
                 text("Hello"),
                 text(" ")
         );
@@ -85,13 +85,13 @@ public class HtmlCapabilityTest extends AbstractHtmlCapabilityTest {
 
     @Test
     public void testBodyWithoutText() throws Exception {
-        ContainerTag div = div().with("Hello", " ", "world!");
+        ContainerElement div = div().with("Hello", " ", "world!");
         assertEquals("<div>Hello world!</div>", div);
     }
 
     @Test
     public void testConditionalAttribute() throws Exception {
-        ContainerTag div = div(when(true, cls("foo")), when(false, id("no-id"))).close();
+        ContainerElement div = div(when(true, cls("foo")), when(false, id("no-id"))).close();
         assertEquals("<div class=\"foo\"></div>", div);
     }
 }

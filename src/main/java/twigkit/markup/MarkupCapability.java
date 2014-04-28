@@ -43,7 +43,7 @@ public interface MarkupCapability {
 
     Content iterate(Loop iterate);
 
-    ContainerTag el(String name, Attribute... attr) throws IOException;
+    ContainerElement el(String name, Attribute... attr) throws IOException;
 
     Attribute attr(String name, String... values);
 }

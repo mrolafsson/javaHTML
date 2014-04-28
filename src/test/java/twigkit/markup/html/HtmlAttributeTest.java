@@ -2,7 +2,6 @@ package twigkit.markup.html;
 
 import org.junit.Test;
 import twigkit.markup.Attribute;
-import twigkit.markup.html.HtmlAttribute;
 
 import java.io.StringWriter;
 

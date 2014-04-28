@@ -7,11 +7,11 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 /**
- * Unit tests for the {@link twigkit.markup.ContainerTag} class.
+ * Unit tests for the {@link ContainerElement} class.
  *
  * @author mr.olafsson
  */
-public class ContainerTagTest extends AbstractHtmlCapabilityTest {
+public class ContainerElementTest extends AbstractHtmlCapabilityTest {
 
     @Test(expected = MarkupException.class)
     public void testDoubleClosing() throws Exception {

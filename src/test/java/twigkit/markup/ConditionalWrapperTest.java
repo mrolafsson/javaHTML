@@ -26,7 +26,7 @@ public class ConditionalWrapperTest extends AbstractHtmlCapabilityTest {
 
     @Test
     public void testTrue() throws Exception {
-        ContainerTag div = div().with(
+        ContainerElement div = div().with(
 
                 when(true).use(
                         span().with(
@@ -46,7 +46,7 @@ public class ConditionalWrapperTest extends AbstractHtmlCapabilityTest {
 
     @Test
     public void testFalse() throws Exception {
-        ContainerTag div = div().with(
+        ContainerElement div = div().with(
 
                 when(false).use(
                         text("Hello World!")
@@ -64,7 +64,7 @@ public class ConditionalWrapperTest extends AbstractHtmlCapabilityTest {
 
     @Test
     public void testNoOtherwise() throws Exception {
-        ContainerTag div = div().with(
+        ContainerElement div = div().with(
                 when(false).use(
                         span().with(
                                 text("Hello"),

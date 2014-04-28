@@ -14,11 +14,11 @@ public interface HtmlCapability extends MarkupCapability {
 
     public void setWriter(Writer writer);
 
-    ContainerTag html(Attribute... attr) throws IOException;
+    ContainerElement html(Attribute... attr) throws IOException;
 
-    ContainerTag body(Attribute... attr) throws IOException;
+    ContainerElement body(Attribute... attr) throws IOException;
 
-    ContainerTag head(Attribute... attr) throws IOException;
+    ContainerElement head(Attribute... attr) throws IOException;
 
     Content meta(Attribute... attr) throws IOException;
 
@@ -29,7 +29,7 @@ public interface HtmlCapability extends MarkupCapability {
      * @return
      * @throws java.io.IOException
      */
-    ContainerTag div(Attribute... attr) throws IOException;
+    ContainerElement div(Attribute... attr) throws IOException;
 
     /**
      * Create a 'span' element.
@@ -38,9 +38,9 @@ public interface HtmlCapability extends MarkupCapability {
      * @return
      * @throws java.io.IOException
      */
-    ContainerTag span(Attribute... attr) throws IOException;
+    ContainerElement span(Attribute... attr) throws IOException;
 
-    ContainerTag em(Attribute... attr) throws IOException;
+    ContainerElement em(Attribute... attr) throws IOException;
 
     /**
      * Create an 'h1' element.
@@ -48,7 +48,7 @@ public interface HtmlCapability extends MarkupCapability {
      * @return
      * @throws java.io.IOException
      */
-    ContainerTag h1(Attribute... attr) throws IOException;
+    ContainerElement h1(Attribute... attr) throws IOException;
 
     /**
      * Create an 'h2' element.
@@ -57,7 +57,7 @@ public interface HtmlCapability extends MarkupCapability {
      * @return
      * @throws java.io.IOException
      */
-    ContainerTag h2(Attribute... attr) throws IOException;
+    ContainerElement h2(Attribute... attr) throws IOException;
 
     /**
      * Create an 'h3' element.
@@ -66,7 +66,7 @@ public interface HtmlCapability extends MarkupCapability {
      * @return
      * @throws java.io.IOException
      */
-    ContainerTag h3(Attribute... attr) throws IOException;
+    ContainerElement h3(Attribute... attr) throws IOException;
 
     /**
      * Create an 'h4' element.
@@ -75,7 +75,7 @@ public interface HtmlCapability extends MarkupCapability {
      * @return
      * @throws java.io.IOException
      */
-    ContainerTag h4(Attribute... attr) throws IOException;
+    ContainerElement h4(Attribute... attr) throws IOException;
 
     /**
      * Create an 'h5' element.
@@ -84,7 +84,7 @@ public interface HtmlCapability extends MarkupCapability {
      * @return
      * @throws java.io.IOException
      */
-    ContainerTag h5(Attribute... attr) throws IOException;
+    ContainerElement h5(Attribute... attr) throws IOException;
 
     /**
      * Create an 'h6' element.
@@ -93,7 +93,7 @@ public interface HtmlCapability extends MarkupCapability {
      * @return
      * @throws java.io.IOException
      */
-    ContainerTag h6(Attribute... attr) throws IOException;
+    ContainerElement h6(Attribute... attr) throws IOException;
 
     /**
      * Create a paragraph element.
@@ -102,7 +102,7 @@ public interface HtmlCapability extends MarkupCapability {
      * @return
      * @throws java.io.IOException
      */
-    ContainerTag p(Attribute... attr) throws IOException;
+    ContainerElement p(Attribute... attr) throws IOException;
 
     /**
      * Create an unordered list.
@@ -111,7 +111,7 @@ public interface HtmlCapability extends MarkupCapability {
      * @return
      * @throws java.io.IOException
      */
-    ContainerTag ul(Attribute... attr) throws IOException;
+    ContainerElement ul(Attribute... attr) throws IOException;
 
     /**
      * Create an ordered list.
@@ -120,7 +120,7 @@ public interface HtmlCapability extends MarkupCapability {
      * @return
      * @throws java.io.IOException
      */
-    ContainerTag ol(Attribute... attr) throws IOException;
+    ContainerElement ol(Attribute... attr) throws IOException;
 
     /**
      * Create a list item element.
@@ -129,7 +129,7 @@ public interface HtmlCapability extends MarkupCapability {
      * @return
      * @throws java.io.IOException
      */
-    ContainerTag li(Attribute... attr) throws IOException;
+    ContainerElement li(Attribute... attr) throws IOException;
 
     /**
      * Create a definition list element.
@@ -138,29 +138,29 @@ public interface HtmlCapability extends MarkupCapability {
      * @return
      * @throws java.io.IOException
      */
-    ContainerTag dl(Attribute... attr) throws IOException;
+    ContainerElement dl(Attribute... attr) throws IOException;
 
-    ContainerTag dt(Attribute... attr) throws IOException;
+    ContainerElement dt(Attribute... attr) throws IOException;
 
-    ContainerTag dd(Attribute... attr) throws IOException;
+    ContainerElement dd(Attribute... attr) throws IOException;
 
-    ContainerTag a(Attribute... attr) throws IOException;
+    ContainerElement a(Attribute... attr) throws IOException;
 
-    SelfClosingTag img(Attribute... attr) throws IOException;
+    SelfClosingElement img(Attribute... attr) throws IOException;
 
-    ContainerTag form(Attribute... attr) throws IOException;
+    ContainerElement form(Attribute... attr) throws IOException;
 
-    ContainerTag input(Attribute... attr) throws IOException;
+    ContainerElement input(Attribute... attr) throws IOException;
 
-    SelfClosingTag textarea(String value, Attribute... attr) throws IOException;
+    SelfClosingElement textarea(String value, Attribute... attr) throws IOException;
 
-    SelfClosingTag checkbox(Attribute... attr) throws IOException;
+    SelfClosingElement checkbox(Attribute... attr) throws IOException;
 
-    ContainerTag fieldset(Attribute... attr) throws IOException;
+    ContainerElement fieldset(Attribute... attr) throws IOException;
 
-    ContainerTag legend(Attribute... attr) throws IOException;
+    ContainerElement legend(Attribute... attr) throws IOException;
 
-    ContainerTag script(Attribute... attr) throws IOException;
+    ContainerElement script(Attribute... attr) throws IOException;
 
     Text text(Object text) throws IOException;
 

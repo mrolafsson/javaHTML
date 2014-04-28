@@ -12,39 +12,39 @@ import java.io.Writer;
  *
  * @author mr.olafsson
  */
-public class ContainerTag extends Tag {
+public class ContainerElement extends Tag {
 
-    private static final Logger logger = LoggerFactory.getLogger(ContainerTag.class);
+    private static final Logger logger = LoggerFactory.getLogger(ContainerElement.class);
 
     private Class context;
     private int state;
 
-    public ContainerTag(Writer writer, String name, Attribute... attributes) throws IOException {
-        this(writer, name, ContainerTag.class, attributes);
+    public ContainerElement(Writer writer, String name, Attribute... attributes) throws IOException {
+        this(writer, name, ContainerElement.class, attributes);
     }
 
-    public ContainerTag(Writer writer, String name, Class context, Attribute... attributes) throws IOException {
+    public ContainerElement(Writer writer, String name, Class context, Attribute... attributes) throws IOException {
         super(writer, name, attributes);
         open();
         this.context = context;
     }
 
-    public ContainerTag with(Content... html) throws IOException {
+    public ContainerElement with(Content... html) throws IOException {
         close();
         return this;
     }
 
-    public ContainerTag with(String... text) throws IOException {
+    public ContainerElement with(String... text) throws IOException {
         append(text);
         close();
         return this;
     }
 
-    public ContainerTag append(Content... html) {
+    public ContainerElement append(Content... html) {
         return this;
     }
 
-    public ContainerTag append(String... text) {
+    public ContainerElement append(String... text) {
         try {
             for (String s : text) {
                 new Text(writer, s);
@@ -55,7 +55,7 @@ public class ContainerTag extends Tag {
         return this;
     }
 
-    private ContainerTag open() throws IOException {
+    private ContainerElement open() throws IOException {
         state++;
         writer.write(LT);
         writer.write(name);
@@ -65,7 +65,7 @@ public class ContainerTag extends Tag {
         return this;
     }
 
-    public ContainerTag close() throws IOException {
+    public ContainerElement close() throws IOException {
         if (state > 0) {
             state--;
             writer.write(LT);

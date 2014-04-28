@@ -32,148 +32,148 @@ public class HtmlCapabilityImpl extends MarkupCapabilityImpl implements HtmlCapa
     }
 
     @Override
-    public ContainerTag html(Attribute... attr) throws IOException {
-        return new ContainerTag(writer, HtmlTag.HTML, context, attr);
+    public ContainerElement html(Attribute... attr) throws IOException {
+        return new ContainerElement(writer, HtmlTag.HTML, context, attr);
     }
 
     @Override
-    public ContainerTag body(Attribute... attr) throws IOException {
-        return new ContainerTag(writer, HtmlTag.BODY, context, attr);
+    public ContainerElement body(Attribute... attr) throws IOException {
+        return new ContainerElement(writer, HtmlTag.BODY, context, attr);
     }
 
     @Override
-    public ContainerTag head(Attribute... attr) throws IOException {
-        return new ContainerTag(writer, HtmlTag.HEAD, context, attr);
+    public ContainerElement head(Attribute... attr) throws IOException {
+        return new ContainerElement(writer, HtmlTag.HEAD, context, attr);
     }
 
     @Override
     public Content meta(Attribute... attr) throws IOException {
-        return new SelfClosingTag(writer, HtmlTag.META, attr);
+        return new SelfClosingElement(writer, HtmlTag.META, attr);
     }
 
     @Override
-    public ContainerTag div(Attribute... attr) throws IOException {
-        return new ContainerTag(writer, HtmlTag.DIV, context, attr);
+    public ContainerElement div(Attribute... attr) throws IOException {
+        return new ContainerElement(writer, HtmlTag.DIV, context, attr);
     }
 
     @Override
-    public ContainerTag span(Attribute... attr) throws IOException {
-        return new ContainerTag(writer, HtmlTag.SPAN, context, attr);
+    public ContainerElement span(Attribute... attr) throws IOException {
+        return new ContainerElement(writer, HtmlTag.SPAN, context, attr);
     }
 
     @Override
-    public ContainerTag em(Attribute... attr) throws IOException {
-        return new ContainerTag(writer, HtmlTag.EM, context, attr);
+    public ContainerElement em(Attribute... attr) throws IOException {
+        return new ContainerElement(writer, HtmlTag.EM, context, attr);
     }
 
     @Override
-    public ContainerTag h1(Attribute... attr) throws IOException {
-        return new ContainerTag(writer, HtmlTag.H1, context, attr);
+    public ContainerElement h1(Attribute... attr) throws IOException {
+        return new ContainerElement(writer, HtmlTag.H1, context, attr);
     }
 
     @Override
-    public ContainerTag h2(Attribute... attr) throws IOException {
-        return new ContainerTag(writer, HtmlTag.H2, context, attr);
+    public ContainerElement h2(Attribute... attr) throws IOException {
+        return new ContainerElement(writer, HtmlTag.H2, context, attr);
     }
 
     @Override
-    public ContainerTag h3(Attribute... attr) throws IOException {
-        return new ContainerTag(writer, HtmlTag.H3, context, attr);
+    public ContainerElement h3(Attribute... attr) throws IOException {
+        return new ContainerElement(writer, HtmlTag.H3, context, attr);
     }
 
     @Override
-    public ContainerTag h4(Attribute... attr) throws IOException {
-        return new ContainerTag(writer, HtmlTag.H4, context, attr);
+    public ContainerElement h4(Attribute... attr) throws IOException {
+        return new ContainerElement(writer, HtmlTag.H4, context, attr);
     }
 
     @Override
-    public ContainerTag h5(Attribute... attr) throws IOException {
-        return new ContainerTag(writer, HtmlTag.H5, context, attr);
+    public ContainerElement h5(Attribute... attr) throws IOException {
+        return new ContainerElement(writer, HtmlTag.H5, context, attr);
     }
 
     @Override
-    public ContainerTag h6(Attribute... attr) throws IOException {
-        return new ContainerTag(writer, HtmlTag.H6, context, attr);
+    public ContainerElement h6(Attribute... attr) throws IOException {
+        return new ContainerElement(writer, HtmlTag.H6, context, attr);
     }
 
     @Override
-    public ContainerTag p(Attribute... attr) throws IOException {
-        return new ContainerTag(writer, HtmlTag.P, context, attr);
+    public ContainerElement p(Attribute... attr) throws IOException {
+        return new ContainerElement(writer, HtmlTag.P, context, attr);
     }
 
     @Override
-    public ContainerTag ul(Attribute... attr) throws IOException {
-        return new ContainerTag(writer, HtmlTag.UL, context, attr);
+    public ContainerElement ul(Attribute... attr) throws IOException {
+        return new ContainerElement(writer, HtmlTag.UL, context, attr);
     }
 
     @Override
-    public ContainerTag ol(Attribute... attr) throws IOException {
-        return new ContainerTag(writer, HtmlTag.OL, context, attr);
+    public ContainerElement ol(Attribute... attr) throws IOException {
+        return new ContainerElement(writer, HtmlTag.OL, context, attr);
     }
 
     @Override
-    public ContainerTag li(Attribute... attr) throws IOException {
-        return new ContainerTag(writer, HtmlTag.LI, context, attr);
+    public ContainerElement li(Attribute... attr) throws IOException {
+        return new ContainerElement(writer, HtmlTag.LI, context, attr);
     }
 
     @Override
-    public ContainerTag dl(Attribute... attr) throws IOException {
-        return new ContainerTag(writer, HtmlTag.DL, context, attr);
+    public ContainerElement dl(Attribute... attr) throws IOException {
+        return new ContainerElement(writer, HtmlTag.DL, context, attr);
     }
 
     @Override
-    public ContainerTag dt(Attribute... attr) throws IOException {
-        return new ContainerTag(writer, HtmlTag.DT, context, attr);
+    public ContainerElement dt(Attribute... attr) throws IOException {
+        return new ContainerElement(writer, HtmlTag.DT, context, attr);
     }
 
     @Override
-    public ContainerTag dd(Attribute... attr) throws IOException {
-        return new ContainerTag(writer, HtmlTag.DD, context, attr);
+    public ContainerElement dd(Attribute... attr) throws IOException {
+        return new ContainerElement(writer, HtmlTag.DD, context, attr);
     }
 
     @Override
-    public ContainerTag a(Attribute... attr) throws IOException {
-        return new ContainerTag(writer, HtmlTag.A, context, attr);
+    public ContainerElement a(Attribute... attr) throws IOException {
+        return new ContainerElement(writer, HtmlTag.A, context, attr);
     }
 
     @Override
-    public SelfClosingTag img(Attribute... attr) throws IOException {
-        return new SelfClosingTag(writer, HtmlTag.IMG, attr);
+    public SelfClosingElement img(Attribute... attr) throws IOException {
+        return new SelfClosingElement(writer, HtmlTag.IMG, attr);
     }
 
     @Override
-    public ContainerTag form(Attribute... attr) throws IOException {
-        return new ContainerTag(writer, HtmlTag.FORM, context, attr);
+    public ContainerElement form(Attribute... attr) throws IOException {
+        return new ContainerElement(writer, HtmlTag.FORM, context, attr);
     }
 
     @Override
-    public ContainerTag input(Attribute... attr) throws IOException {
-        return new ContainerTag(writer, HtmlTag.INPUT, context, attr);
+    public ContainerElement input(Attribute... attr) throws IOException {
+        return new ContainerElement(writer, HtmlTag.INPUT, context, attr);
     }
 
     @Override
-    public SelfClosingTag textarea(String value, Attribute... attr) throws IOException {
-        return new SelfClosingTag(writer, HtmlTag.TEXTAREA, attr("value", value), attr);
+    public SelfClosingElement textarea(String value, Attribute... attr) throws IOException {
+        return new SelfClosingElement(writer, HtmlTag.TEXTAREA, attr("value", value), attr);
     }
 
     @Override
-    public SelfClosingTag checkbox(Attribute... attr) throws IOException {
-        return new SelfClosingTag(writer, HtmlTag.INPUT, attr("type", "checkbox"), attr);
+    public SelfClosingElement checkbox(Attribute... attr) throws IOException {
+        return new SelfClosingElement(writer, HtmlTag.INPUT, attr("type", "checkbox"), attr);
     }
 
     @Override
-    public ContainerTag fieldset(Attribute... attr) throws IOException {
-        return new ContainerTag(writer, HtmlTag.FIELDSET, context, attr);
+    public ContainerElement fieldset(Attribute... attr) throws IOException {
+        return new ContainerElement(writer, HtmlTag.FIELDSET, context, attr);
     }
 
     @Override
-    public ContainerTag legend(Attribute... attr) throws IOException {
-        return new ContainerTag(writer, HtmlTag.LEGEND, context, attr);
+    public ContainerElement legend(Attribute... attr) throws IOException {
+        return new ContainerElement(writer, HtmlTag.LEGEND, context, attr);
     }
 
     @Override
-    public ContainerTag script(Attribute... attr) throws IOException {
-        return new ContainerTag(writer, HtmlTag.SCRIPT, context, attr);
+    public ContainerElement script(Attribute... attr) throws IOException {
+        return new ContainerElement(writer, HtmlTag.SCRIPT, context, attr);
     }
 
     @Override

@@ -71,8 +71,8 @@ public abstract class MarkupCapabilityImpl implements MarkupCapability {
     }
 
     @Override
-    public ContainerTag el(String name, Attribute... attr) throws IOException {
-        return new ContainerTag(writer, name, context, attr);
+    public ContainerElement el(String name, Attribute... attr) throws IOException {
+        return new ContainerElement(writer, name, context, attr);
     }
 
     @Override
