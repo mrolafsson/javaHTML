@@ -1,7 +1,5 @@
 package twigkit.markup;
 
-import twigkit.markup.html.Code;
-
 import java.io.IOException;
 import java.io.Writer;
 
@@ -44,6 +42,10 @@ public interface MarkupCapability {
     Content iterate(Loop iterate);
 
     ContainerElement el(String name, Attribute... attr) throws IOException;
+
+    Text text(Object text) throws IOException;
+
+    Text text(String text, Object... data) throws IOException;
 
     Attribute attr(String name, String... values);
 }

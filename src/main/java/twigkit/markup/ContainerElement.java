@@ -34,8 +34,8 @@ public class ContainerElement extends Tag {
         return this;
     }
 
-    public ContainerElement with(String... text) throws IOException {
-        append(text);
+    public ContainerElement with(String text, Object... data) throws IOException {
+        append(text, data);
         close();
         return this;
     }
@@ -44,11 +44,9 @@ public class ContainerElement extends Tag {
         return this;
     }
 
-    public ContainerElement append(String... text) {
+    public ContainerElement append(String text, Object... data) {
         try {
-            for (String s : text) {
-                new Text(writer, s);
-            }
+            new Text(writer, text, data);
         } catch (IOException e) {
             e.printStackTrace();
         }

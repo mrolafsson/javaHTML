@@ -16,4 +16,15 @@ public class Text extends Content {
             writer.write(text.toString());
         }
     }
+
+    public Text(Writer writer, String text, Object... data) throws IOException {
+        super(writer);
+        if (text != null) {
+           if (data.length > 0) {
+               writer.write(String.format(text, data));
+           } else {
+               writer.write(text);
+           }
+        }
+    }
 }

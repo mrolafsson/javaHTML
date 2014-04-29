@@ -1,8 +1,9 @@
 package twigkit.markup.html.helper;
 
 import twigkit.markup.*;
-import twigkit.markup.html.*;
 import twigkit.markup.html.HtmlAttribute;
+import twigkit.markup.html.HtmlCapability;
+import twigkit.markup.html.HtmlCapabilityImpl;
 
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.tagext.SimpleTagSupport;
@@ -206,6 +207,11 @@ public abstract class HtmlSimpleTagSupport extends SimpleTagSupport implements H
     @Override
     public Text text(Object text) throws IOException {
         return htmlCapability.text(text);
+    }
+
+    @Override
+    public Text text(String text, Object... data) throws IOException {
+        return htmlCapability.text(text, data);
     }
 
     @Override

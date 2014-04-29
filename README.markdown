@@ -1,5 +1,5 @@
 # javaHTML
-javaHTML is a Java library for efficiently writing valid HTML using a fluid API. It's more readable and less error prone than string concatenation (or manually writing to stream).
+javaHTML is a Java library for efficiently writing valid HTML using a fluent API. It's more readable and less error prone than string concatenation (or manually writing to stream).
 
 > Supports fully inline [**iteration**](#iteration), [**code execution**](#custom-code), [**conditional expressions**](#conditionals), and reusable [**components**](#components).
 
@@ -32,6 +32,7 @@ Important: If no elements are added to the body of the tag(added using `with()` 
 	
 Other tags are automatically self-closing and therefore do not accept child elements via the `with()` method. You can write text nodes (unwrapped) using the `text()` method.
 
+
 #### Validate
 It's good policy to call `validate()` at the end of the HTML generation to make sure all tags were properly closed. Failure to close elements or otherwise invalid markup will be logged out at a `warn` level.
 
@@ -41,12 +42,28 @@ It's good policy to call `validate()` at the end of the HTML generation to make 
 	).validate();
 
 #### Available Tags
-`a(Attribute... attr)`, `body(Attribute... attr)`, `checkbox(Attribute... attr)`, `custom(String name, Attribute... attr)`, `dd(Attribute... attr)`, `div(Attribute... attr)`, `dl(Attribute... attr)`, `dt(Attribute... attr)`, `em(Attribute... attr)`, `fieldset(Attribute... attr)`, `form(Attribute... attr)`, `head(Attribute... attr)`, `html(Attribute... attr)`, `img(Attribute... attr)`, `input(Attribute... attr)`, `legend(Attribute... attr)`, `li(Attribute... attr)`, `meta(Attribute... attr)`, `ol(Attribute... attr)`, `p(Attribute... attr)`, `script(Attribute... attr)`, `span(Attribute... attr)`, `text(Object text)`, `textarea(String value, Attribute... attr)`, `ul(Attribute... attr)`
+`a(Attribute... attr)`, `body(Attribute... attr)`, `checkbox(Attribute... attr)`, `el(String name, Attribute... attr)`, `dd(Attribute... attr)`, `div(Attribute... attr)`, `dl(Attribute... attr)`, `dt(Attribute... attr)`, `em(Attribute... attr)`, `fieldset(Attribute... attr)`, `form(Attribute... attr)`, `head(Attribute... attr)`, `html(Attribute... attr)`, `img(Attribute... attr)`, `input(Attribute... attr)`, `legend(Attribute... attr)`, `li(Attribute... attr)`, `meta(Attribute... attr)`, `ol(Attribute... attr)`, `p(Attribute... attr)`, `script(Attribute... attr)`, `span(Attribute... attr)`, `text(Object text)`, `text(String text, Object... data)`, `textarea(String value, Attribute... attr)`, `ul(Attribute... attr)`
+
+#### Format and Templating
+When outputting content in the body of elements using `with()` then using `text()` is implied and optional.
+In both cases you can use this to format the output using any number of arguments:
+
+    em().with("%.3f and %.6f", Math.PI, Math.E)
+
+Would generate:
+
+    <em>3.142 and 2.718282</em>
+
+Equally using the `text()` method:
+
+    em().with(
+        text("%.3f and %.6f", Math.PI, Math.E)
+    )
 
 #### Missing or Custom Tags?
-You can add any tag or element using the `custom()` method:
+You can add any tag or element using the `el()` method:
 
-	custom("blink").with("Las Vegas Baby!");
+	el("blink").with("Las Vegas Baby!");
 
 Would generate:
 	
@@ -54,7 +71,7 @@ Would generate:
 	
 You can add attributes to custom tags like any other:
 
-	custom("strong", style("background-color: red;")).with("Rocky!");
+	el("strong", style("background-color: red;")).with("Rocky!");
 	
 Would generate:
 
@@ -166,7 +183,7 @@ Add the javaHTML jar to the class path or include using Maven:
 	<dependency>
 		<groupId>twigkit</groupId>
 	    <artifactId>javaHTML</artifactId>
-	    <version>2.0-SNAPSHOT</version>
+	    <version>3.0-SNAPSHOT</version>
 	</dependency>
 
 ## Integration
@@ -199,7 +216,7 @@ If you're using `SimpleTagSupport` then extend `HtmlSimpleTagSupport` and implem
 	}
 	
 ### Do It Yourself method
-Use the `Create` class and either use the default `toString()` method or pass in your own `Writer` in the constructor.
+Use the `Create` class and either use the default `toString()` method:
 
 	new Create() {
     	@Override
@@ -207,3 +224,13 @@ Use the `Create` class and either use the default `toString()` method or pass in
         	div().with("Hello world!");
     	}
 	}.toString();
+
+Or alternatively pass in a `Writer` in the constructor.
+
+    Writer writer = new StringWriter();
+    new Create(writer) {
+    	@Override
+	    public void markup() throws IOException {
+        	div().with("Hello world!");
+    	}
+	};

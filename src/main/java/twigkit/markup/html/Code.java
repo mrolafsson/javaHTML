@@ -8,11 +8,12 @@ import java.io.Writer;
  *
  * @author mr.olafsson
  */
-public abstract class Code extends HtmlCapabilityImpl {
+public abstract class Code extends HtmlCapabilityImpl implements twigkit.markup.Code {
 
     public void setWriter(Writer writer) {
         super.setWriter(writer);
     }
 
     public abstract void run() throws IOException;
+
 }

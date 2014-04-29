@@ -176,11 +176,6 @@ public class HtmlCapabilityImpl extends MarkupCapabilityImpl implements HtmlCapa
         return new ContainerElement(writer, HtmlTag.SCRIPT, context, attr);
     }
 
-    @Override
-    public Text text(Object text) throws IOException {
-        return new Text(writer, text);
-    }
-
     // Attributes
 
     @Override
