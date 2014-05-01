@@ -46,13 +46,13 @@
 
     <distributionManagement>
         <repository>
-            <id>repo.twigkit.com-releases</id>
-            <name>TwigKit Releases</name>
+            <id>twigkit.com-releases</id>
+            <name>Twigkit Releases</name>
             <url>http://twigkit.artifactoryonline.com/twigkit/release</url>
         </repository>
         <snapshotRepository>
-            <id>repo.twigkit.com-snapshots</id>
-            <name>TwigKit Snapshots</name>
+            <id>twigkit.com-snapshots</id>
+            <name>Twigkit Snapshots</name>
             <url>http://twigkit.artifactoryonline.com/twigkit/snapshot</url>
             <uniqueVersion>true</uniqueVersion>
         </snapshotRepository>

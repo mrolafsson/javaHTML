@@ -154,7 +154,7 @@ public abstract class Component {
         return htmlCapability.script(attr);
     }
 
-    protected ContainerElement el(String name, HtmlAttribute... attr) throws IOException {
+    protected ContainerElement el(String name, Attribute... attr) throws IOException {
         return htmlCapability.el(name, attr);
     }
 
@@ -166,7 +166,7 @@ public abstract class Component {
         return htmlCapability.when(test, attr);
     }
 
-    protected Attribute attr(String name, String... values) {
+    protected Attribute attr(String name, Object... values) {
         return htmlCapability.attr(name, values);
     }
 
