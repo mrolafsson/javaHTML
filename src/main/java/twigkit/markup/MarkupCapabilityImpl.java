@@ -86,7 +86,7 @@ public abstract class MarkupCapabilityImpl implements MarkupCapability {
     }
 
     @Override
-    public HtmlAttribute attr(String name, String... values) {
+    public HtmlAttribute attr(String name, Object... values) {
         return new HtmlAttribute(name, values);
     }
 }

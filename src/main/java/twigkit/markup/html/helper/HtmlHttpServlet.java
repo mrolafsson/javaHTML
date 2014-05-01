@@ -217,7 +217,7 @@ public abstract class HtmlHttpServlet extends HttpServlet implements HtmlCapabil
     }
 
     @Override
-    public Attribute attr(String name, String... values) {
+    public Attribute attr(String name, Object... values) {
         return htmlCapability.attr(name, values);
     }
 

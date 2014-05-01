@@ -162,8 +162,6 @@ public interface HtmlCapability extends MarkupCapability {
 
     ContainerElement script(Attribute... attr) throws IOException;
 
-    Attribute attr(String name, String... values);
-
     HtmlAttribute.Class cls(String... values);
 
     HtmlAttribute.Id id(String id);

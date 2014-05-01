@@ -220,7 +220,7 @@ public abstract class HtmlSimpleTagSupport extends SimpleTagSupport implements H
     }
 
     @Override
-    public HtmlAttribute attr(String name, String... values) {
+    public HtmlAttribute attr(String name, Object... values) {
         return htmlCapability.attr(name, values);
     }
 

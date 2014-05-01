@@ -47,5 +47,5 @@ public interface MarkupCapability {
 
     Text text(String text, Object... data) throws IOException;
 
-    Attribute attr(String name, String... values);
+    Attribute attr(String name, Object... values);
 }
