@@ -64,6 +64,23 @@ public class ConditionalWrapperTest extends AbstractHtmlCapabilityTest {
     @Test
     public void testNoOtherwise() throws Exception {
         ContainerTag div = div().with(
+                when(true).use(
+                        span().with(
+                                text("Hello"),
+                                text(" world!")
+                        ),
+                        span().with(
+                                text("Go go go!")
+                        )
+                ),
+                span().with(text("no others"))
+        );
+        assertNotEquals("<div><span>Hello world!</span><span>Go go go!</span><span>no others</span></div>", div);
+    }
+
+    @Test
+    public void testNoOtherwiseFalse() throws Exception {
+        ContainerTag div = div().with(
                 when(false).use(
                         span().with(
                                 text("Hello"),
@@ -76,5 +93,27 @@ public class ConditionalWrapperTest extends AbstractHtmlCapabilityTest {
                 span().with(text("no others"))
         );
         assertEquals("<div><span>no others</span></div>", div);
+    }
+
+    @Test
+    public void testNestedConditionals() throws Exception {
+        ContainerTag div = div().with(
+                when(false).use(
+                        div().with(
+                                text("Outside before - do not show"),
+                                when(false).use(
+                                        span().with("Do not show")
+                                ).otherwise(
+                                        span().with("Do not show")
+                                ),
+                                text("Outside after - do not show")
+                        )
+                ).otherwise(),
+                div().with("Show me!")
+        ).append(
+                div().with("and me!")
+        );
+
+        assertEquals("<div><div>Show me!</div></div><div>and me!</div>", div);
     }
 }

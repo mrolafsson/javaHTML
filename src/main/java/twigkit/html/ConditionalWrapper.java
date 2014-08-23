@@ -9,15 +9,25 @@ package twigkit.html;
  * a {@link DummyWriter}. As a workaround, if you use the {@link HtmlCapabilityImpl#exec(Code)} method and pass it a {@link Code} instance then
  * that code will only be run if the condition is met.
  *
+ * Important: You must terminate a {@link Use} or {@link twigkit.html.HtmlCapability#when(boolean)} with at least an empty {@link twigkit.html.ConditionalWrapper#otherwise(Content...)}.
+ *
  * @author mr.olafsson
  */
 public abstract class ConditionalWrapper extends Content {
 
+    // True if this conditional is nested within another that evaluated to false
+    private final boolean nestedFalse;
+
     private HtmlCapabilityImpl htmlCapability;
 
     public ConditionalWrapper(HtmlCapabilityImpl htmlCapability) {
+        this(htmlCapability, false);
+    }
+
+    public ConditionalWrapper(HtmlCapabilityImpl htmlCapability, boolean nestedFalse) {
         super(htmlCapability.getWriter());
         this.htmlCapability = htmlCapability;
+        this.nestedFalse = nestedFalse;
     }
 
     public Otherwise use(Content... html) {
@@ -34,11 +44,15 @@ public abstract class ConditionalWrapper extends Content {
 
     public static class Use extends ConditionalWrapper {
         public Use(HtmlCapabilityImpl htmlCapability) {
-            super(htmlCapability);
+            this(htmlCapability, false);
+        }
+
+        public Use(HtmlCapabilityImpl htmlCapability, boolean nestedFalse) {
+            super(htmlCapability, nestedFalse);
         }
 
         public Otherwise use(Content... html) {
-            if (writer instanceof DummyWriter) {
+            if (writer instanceof DummyWriter && !super.nestedFalse) {
                 getHtmlCapability().setWriter(((DummyWriter) writer).getReal());
             } else {
                 getHtmlCapability().setWriter(new DummyWriter(getHtmlCapability()));
@@ -54,7 +68,7 @@ public abstract class ConditionalWrapper extends Content {
 
         @Override
         public Content otherwise(Content... html) {
-            if (writer instanceof DummyWriter) {
+            if (writer instanceof DummyWriter && !super.nestedFalse) {
                 getHtmlCapability().setWriter(((DummyWriter) writer).getReal());
             }
             return this;

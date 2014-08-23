@@ -17,4 +17,9 @@ public class AbstractHtmlCapabilityTest extends HtmlCapabilityImpl {
         setWriter(new StringWriter());
         junit.framework.Assert.assertEquals(expected, actual.toString());
     }
+
+    protected void assertNotEquals(String expected, Content actual) {
+        setWriter(new StringWriter());
+        junit.framework.Assert.assertNotSame(expected, actual.toString());
+    }
 }

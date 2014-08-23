@@ -88,6 +88,14 @@ You can conditionally output data using a `when()` expression:
 	    )
 	);
 
+Important: You must terminate a `when()` with at least an empty `otherwise()`, semantically like an otherwise do nothing.
+
+    div().with(
+	    when( Calendar.getInstance().get(Calendar.HOUR_OF_DAY) < 11 ).use(
+			h1().with("Good morning!")
+	    ).otherwise()
+	);
+
 ## Iteration
 You can add iteration inline using the `iterate()` method and a `Loop` implementation:
 
