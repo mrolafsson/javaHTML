@@ -1,4 +1,4 @@
-package twigkit.markup;
+package twigkit.markup.html;
 
 import org.junit.Test;
 import twigkit.markup.Loop;

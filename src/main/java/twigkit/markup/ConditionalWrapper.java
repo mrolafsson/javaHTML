@@ -6,22 +6,32 @@ package twigkit.markup;
  *
  * Important: Irrespective of which conditional wrapper is executed, all code in the body WILL STILL BE EXECUTED the only
  * difference is that {@link Content} tags will not write anything to the stream because they will be passed
- * a {@link DummyWriter}. As a workaround, if you use the {@link twigkit.markup.html.HtmlCapabilityImpl#exec(twigkit.markup.html.Code)} method and pass it a {@link twigkit.markup.html.Code} instance then
+ * a {@link DummyWriter}. As a workaround, if you use the {@link twigkit.markup.MarkupCapability#exec(Code)} method and pass it a {@link twigkit.markup.html.Code} instance then
  * that code will only be run if the condition is met.
+ *
+ * Important: You must terminate a {@link Use} or {@link twigkit.markup.MarkupCapability#when(boolean)} with at least an empty {@link twigkit.markup.ConditionalWrapper#otherwise(Content...)}.
  *
  * @author mr.olafsson
  */
 public abstract class ConditionalWrapper extends Content {
 
-    private MarkupCapability htmlCapability;
+    // True if this conditional is nested within another that evaluated to false
+    private final boolean nestedFalse;
 
-    public ConditionalWrapper(MarkupCapability htmlCapability) {
-        super(htmlCapability.getWriter());
-        this.htmlCapability = htmlCapability;
+    private MarkupCapability markupCapability;
+
+    public ConditionalWrapper(MarkupCapability markupCapability) {
+        this(markupCapability, false);
+    }
+
+    public ConditionalWrapper(MarkupCapability markupCapability, boolean nestedFalse) {
+        super(markupCapability.getWriter());
+        this.markupCapability = markupCapability;
+        this.nestedFalse = nestedFalse;
     }
 
     public Otherwise use(Content... html) {
-        return new Otherwise(htmlCapability);
+        return new Otherwise(markupCapability);
     }
 
     public Content otherwise(Content... html) {
@@ -29,16 +39,21 @@ public abstract class ConditionalWrapper extends Content {
     }
 
     protected MarkupCapability getHtmlCapability() {
-        return htmlCapability;
+        return markupCapability;
     }
 
     public static class Use extends ConditionalWrapper {
-        public Use(MarkupCapability htmlCapability) {
-            super(htmlCapability);
+
+        public Use(MarkupCapability markupCapability) {
+            this(markupCapability, false);
+        }
+
+        public Use(MarkupCapability markupCapability, boolean nestedFalse) {
+            super(markupCapability, nestedFalse);
         }
 
         public Otherwise use(Content... html) {
-            if (writer instanceof DummyWriter) {
+            if (writer instanceof DummyWriter && !super.nestedFalse) {
                 getHtmlCapability().setWriter(((DummyWriter) writer).getReal());
             } else {
                 getHtmlCapability().setWriter(new DummyWriter(getHtmlCapability()));
@@ -54,7 +69,7 @@ public abstract class ConditionalWrapper extends Content {
 
         @Override
         public Content otherwise(Content... html) {
-            if (writer instanceof DummyWriter) {
+            if (writer instanceof DummyWriter && !super.nestedFalse) {
                 getHtmlCapability().setWriter(((DummyWriter) writer).getReal());
             }
             return this;

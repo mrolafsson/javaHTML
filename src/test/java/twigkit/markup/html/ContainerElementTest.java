@@ -1,13 +1,14 @@
-package twigkit.markup;
+package twigkit.markup.html;
 
 import org.junit.Test;
+import twigkit.markup.MarkupException;
 import twigkit.markup.html.AbstractHtmlCapabilityTest;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 /**
- * Unit tests for the {@link ContainerElement} class.
+ * Unit tests for the {@link twigkit.markup.ContainerElement} class.
  *
  * @author mr.olafsson
  */

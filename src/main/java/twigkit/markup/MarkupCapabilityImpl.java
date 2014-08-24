@@ -41,10 +41,11 @@ public abstract class MarkupCapabilityImpl implements MarkupCapability {
 
     @Override
     public ConditionalWrapper when(boolean test) {
+        boolean nestedFalse = this.writer instanceof DummyWriter;
         if (!test) {
             this.writer = new DummyWriter(this);
         }
-        return new ConditionalWrapper.Use(this);
+        return new ConditionalWrapper.Use(this, nestedFalse);
     }
 
     @Override
