@@ -9,7 +9,7 @@ import java.io.StringWriter;
  *
  * @author mr.olafsson
  */
-public class AbstractMarkupCapabilityTest extends HtmlCapabilityImpl {
+public class AbstractMarkupCapabilityTest extends MarkupCapabilityImpl {
 
     public AbstractMarkupCapabilityTest() {
         super(new StringWriter(), AbstractMarkupCapabilityTest.class);

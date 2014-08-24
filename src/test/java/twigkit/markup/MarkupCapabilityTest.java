@@ -32,8 +32,7 @@ public class MarkupCapabilityTest extends AbstractMarkupCapabilityTest {
 
     @Test
     public void testConditionalAttribute() throws Exception {
-        assertEquals("<number class=\"foo\"></number>", el("number", when(true, cls("foo")), when(false, id("no-id"))).close());
-
+        assertEquals("<number class=\"foo\"></number>", el("number", when(true, attr("class", "foo")), when(false, attr("id", "no-id"))).close());
     }
 
     @Test

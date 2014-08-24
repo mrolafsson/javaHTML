@@ -1,6 +1,6 @@
 package twigkit.markup;
 
-import twigkit.markup.html.HtmlAttribute;
+import twigkit.markup.html.*;
 
 import java.io.IOException;
 import java.io.Writer;
@@ -89,5 +89,11 @@ public abstract class MarkupCapabilityImpl implements MarkupCapability {
     @Override
     public HtmlAttribute attr(String name, Object... values) {
         return new HtmlAttribute(name, values);
+    }
+
+    @Override
+    public Content component(Component component) throws IOException {
+        component.render(this);
+        return new Content(getWriter());
     }
 }

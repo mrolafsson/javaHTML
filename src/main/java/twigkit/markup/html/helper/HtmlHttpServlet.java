@@ -281,4 +281,9 @@ public abstract class HtmlHttpServlet extends HttpServlet implements HtmlCapabil
     public Content component(Component component) throws IOException {
         return htmlCapability.component(component);
     }
+
+    @Override
+    public Content component(twigkit.markup.Component component) throws IOException {
+        return htmlCapability.component(component);
+    }
 }
