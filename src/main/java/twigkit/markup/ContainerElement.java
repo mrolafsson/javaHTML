@@ -19,10 +19,6 @@ public class ContainerElement extends Tag {
     private Class context;
     private int state;
 
-    public ContainerElement(Writer writer, String name, Attribute... attributes) throws IOException {
-        this(writer, name, ContainerElement.class, attributes);
-    }
-
     public ContainerElement(Writer writer, String name, Class context, Attribute... attributes) throws IOException {
         super(writer, name, attributes);
         open();

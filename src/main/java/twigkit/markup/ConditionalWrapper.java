@@ -44,10 +44,6 @@ public abstract class ConditionalWrapper extends Content {
 
     public static class Use extends ConditionalWrapper {
 
-        public Use(MarkupCapability markupCapability) {
-            this(markupCapability, false);
-        }
-
         public Use(MarkupCapability markupCapability, boolean nestedFalse) {
             super(markupCapability, nestedFalse);
         }
