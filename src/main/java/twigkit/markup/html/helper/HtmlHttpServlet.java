@@ -1,6 +1,7 @@
 package twigkit.markup.html.helper;
 
 import twigkit.markup.*;
+import twigkit.markup.html.Component;
 import twigkit.markup.html.HtmlAttribute;
 import twigkit.markup.html.HtmlCapability;
 import twigkit.markup.html.HtmlCapabilityImpl;

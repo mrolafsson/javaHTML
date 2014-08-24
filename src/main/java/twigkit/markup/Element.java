@@ -4,18 +4,18 @@ import java.io.IOException;
 import java.io.Writer;
 
 /**
- * Any type of HTML element is represented as a {@link Tag}.
+ * Any type of XML element is represented as a {@link Element}.
  *
  * @author mr.olafsson
  */
-public class Tag extends Content {
+public class Element extends Content {
 
     public static final String LT = "<", GT = ">", SLASH = "/", SPACE = " ";
 
     protected final String name;
     protected final Attribute[] attributes;
 
-    public Tag(Writer writer, String name, Attribute... attributes) throws IOException {
+    public Element(Writer writer, String name, Attribute... attributes) throws IOException {
         super(writer);
         this.name = name;
         this.attributes = attributes;

@@ -3,7 +3,6 @@ package twigkit.markup;
 import org.junit.Test;
 import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
-import org.w3c.dom.Element;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -33,25 +32,25 @@ public class PerformanceTest extends AbstractMarkupCapabilityTest {
             try {
                 // root elements
                 Document doc = docBuilder.newDocument();
-                Element rootElement = doc.createElement("marx");
+                org.w3c.dom.Element rootElement = doc.createElement("marx");
                 doc.appendChild(rootElement);
 
                 for (String name : brothers) {
-                    Element brother = doc.createElement("brother");
+                    org.w3c.dom.Element brother = doc.createElement("brother");
 
                     Attr attr = doc.createAttribute("id");
                     attr.setValue(name);
                     brother.setAttributeNode(attr);
 
-                    Element firstname = doc.createElement("first-name");
+                    org.w3c.dom.Element firstname = doc.createElement("first-name");
                     firstname.appendChild(doc.createTextNode(name));
                     brother.appendChild(firstname);
 
-                    Element lastname = doc.createElement("last-name");
+                    org.w3c.dom.Element lastname = doc.createElement("last-name");
                     lastname.appendChild(doc.createTextNode("Marx"));
                     brother.appendChild(lastname);
 
-                    Element nickname = doc.createElement("nickname");
+                    org.w3c.dom.Element nickname = doc.createElement("nickname");
                     nickname.appendChild(doc.createTextNode(name));
                     brother.appendChild(nickname);
 
@@ -80,7 +79,7 @@ public class PerformanceTest extends AbstractMarkupCapabilityTest {
         long start = new Date().getTime();
 
         for (int i = 0; i < 100; i++) {
-            Tag el = el("marx").with(
+            Element el = el("marx").with(
                     iterate(new Loop<String>(brothers) {
                         @Override
                         public void each(String name) throws Exception {

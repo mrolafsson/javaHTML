@@ -1,7 +1,6 @@
 package twigkit.markup.html;
 
 import org.junit.Test;
-import twigkit.markup.Component;
 
 import java.io.IOException;
 

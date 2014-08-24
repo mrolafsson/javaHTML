@@ -1,7 +1,6 @@
-package twigkit.markup;
+package twigkit.markup.html;
 
-import twigkit.markup.html.*;
-import twigkit.markup.html.HtmlAttribute;
+import twigkit.markup.*;
 
 import java.io.IOException;
 
@@ -50,7 +49,7 @@ public abstract class Component {
         return htmlCapability.when(test);
     }
 
-    protected Content exec(Code code) throws IOException {
+    protected Content exec(twigkit.markup.Code code) throws IOException {
         return htmlCapability.exec(code);
     }
 

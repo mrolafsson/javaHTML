@@ -3,11 +3,7 @@ package twigkit.markup.html;
 import org.junit.Test;
 import twigkit.markup.ContainerElement;
 import twigkit.markup.Content;
-import twigkit.markup.Tag;
-
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import twigkit.markup.Element;
 
 /**
  * Unit tests for the {@link HtmlCapabilityImpl} class.
@@ -91,13 +87,13 @@ public class HtmlCapabilityTest extends AbstractHtmlCapabilityTest {
 
     @Test
     public void testFormatting() throws Exception {
-        Tag pi = em().with("%.3f and %.6f", Math.PI, Math.E);
+        Element pi = em().with("%.3f and %.6f", Math.PI, Math.E);
         assertEquals("<em>3.142 and 2.718282</em>", pi);
     }
 
     @Test
     public void testFormattingWithOrWithoutText() throws Exception {
-        Tag pi = ul().with(
+        Element pi = ul().with(
                 li().with("%.3f", Math.PI),
                 li().with(text("%.6f", Math.E))
         );

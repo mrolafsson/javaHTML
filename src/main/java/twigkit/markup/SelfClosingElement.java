@@ -8,7 +8,7 @@ import java.io.Writer;
  *
  * @author mr.olafsson
  */
-public class SelfClosingElement extends Tag {
+public class SelfClosingElement extends Element {
 
     public SelfClosingElement(Writer writer, String name, Attribute... attributes) throws IOException {
         this(writer, name, null, attributes);

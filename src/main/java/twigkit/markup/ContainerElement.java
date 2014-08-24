@@ -8,11 +8,11 @@ import java.io.IOException;
 import java.io.Writer;
 
 /**
- * Represents HTML elements or {@link Tag}s that can contain other elements or content.
+ * Represents HTML elements or {@link Element}s that can contain other elements or content.
  *
  * @author mr.olafsson
  */
-public class ContainerElement extends Tag {
+public class ContainerElement extends Element {
 
     private static final Logger logger = LoggerFactory.getLogger(ContainerElement.class);
 
